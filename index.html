@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page Unificada - Estética Automotiva</title>
+    <title>RSales Lavacar - Estética Automotiva</title>
+
+    <meta name="description" content="RSales Lavacar - Estética automotiva em Maringá. Lavagem detalhada, polimento e revitalização de faróis.">
+    <meta name="author" content="RSales Lavacar">
+
+    <link rel="icon" href="rsales-logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <style>
         /* ========================================
-        ESTILOS CSS (DENTRO DA TAG <style>) - TEMA ESCURO (DARK MODE)
+        ESTILOS CSS (COMPLETO DO TEMA ESCURO)
         ========================================
         */
         :root {
@@ -18,7 +23,6 @@
             --dark-bg: #1a1a1a; /* Preto (Fundo Mais Escuro) */
             --mid-dark-bg: #292929; /* Cinza Escuro (Fundo de Seção/Cards) */
             --white-color: #ffffff;
-            --text-color-dark: #212529; /* (Não mais usado como principal) */
             --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra mais forte para fundo escuro */
         }
 
@@ -74,7 +78,7 @@
         }
 
         .logo-img {
-            height: 70px; /* ALTERADO: AUMENTADO PARA 70px */
+            height: 70px; 
             width: auto;
             vertical-align: middle;
             transition: opacity 0.3s;
@@ -129,8 +133,8 @@
             justify-content: center;
             overflow: hidden;
             
-            /* --- LOGO COMO FUNDO PRINCIPAL --- */
-            background-image: url('RSALES LOGO.png'); 
+            /* LOGO COMO FUNDO (Ajustado o nome do arquivo, se necessário, use "RSALES LOGO.png" ou "rsales-logo.png") */
+            background-image: url('rsales-logo.png'); 
             background-size: cover; 
             background-position: center center;
             background-repeat: no-repeat;
@@ -182,7 +186,7 @@
         /* SEÇÃO SOBRE */
         /* --------------------------- */
         #sobre {
-            background-color: var(--mid-dark-bg); /* Fundo Cinza Escuro */
+            background-color: var(--mid-dark-bg); 
             text-align: center;
             padding: 60px 0; 
         }
@@ -190,7 +194,7 @@
         #sobre h2 {
             font-size: 2em;
             margin-bottom: 20px;
-            color: var(--primary-color); /* Título em destaque */
+            color: var(--primary-color); 
         }
         
         #sobre p {
@@ -206,9 +210,9 @@
         /* SEÇÃO SERVIÇOS */
         /* --------------------------- */
         #servicos {
-            background-color: var(--dark-bg); /* FUNDO ESCURO */
+            background-color: var(--dark-bg); 
             text-align: center;
-            color: var(--secondary-color); /* TEXTO CLARO */
+            color: var(--secondary-color); 
         }
 
         #servicos h2 {
@@ -217,7 +221,6 @@
             color: var(--secondary-color); 
         }
         
-        /* Novo estilo para destacar o preço nos cards de serviço */
         .service-price {
             display: block; 
             color: var(--primary-color); 
@@ -234,7 +237,7 @@
         }
 
         .service-card {
-            background: var(--mid-dark-bg); /* CARD ESCURO */
+            background: var(--mid-dark-bg); 
             color: var(--secondary-color); 
             padding: 0;
             border-radius: 8px;
@@ -311,9 +314,8 @@
         
         .video-card video {
             width: 100%;
-            height: auto;
+            height: 400px; 
             display: block;
-            min-height: 400px; 
             object-fit: cover; 
         }
 
@@ -342,6 +344,7 @@
             color: var(--secondary-color); 
         }
         
+        /* Adicionei de volta estilos de avaliações ausentes */
         .avaliacoes-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -389,6 +392,7 @@
         .google-link i {
             margin-right: 10px;
         }
+
 
         /* --------------------------- */
         /* SEÇÃO: LOCALIZAÇÃO */
@@ -477,7 +481,7 @@
             
             .logo-img {
                 margin-right: auto; 
-                height: 50px; /* Ajuste para telas menores */
+                height: 50px; 
             }
 
             .nav-links {
@@ -514,190 +518,187 @@
                 margin: 10px 0;
             }
             .logo-img {
-                height: 45px; /* Ajuste menor ainda para mobiles pequenos */
+                height: 45px; 
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#hero">
-                    <img src="RSALES LOGO.png" alt="Logo Auto Estética Premium" class="logo-img">
-                </a>
-                
-                <div class="nav-center-group">
-                    <div class="nav-links">
-                        <a href="#hero">Início</a>
-                        <a href="#sobre">Sobre</a>
-                        <a href="#servicos">Serviços</a>
-                        <a href="#videos">Vídeos</a> 
-                        <a href="#avaliacoes">Avaliações</a>
-                        <a href="#localizacao">Localização</a> 
-                    </div>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="#hero">
+                <img src="rsales-logo.png" alt="RSales Lavacar" class="logo-img">
+            </a>
+
+            <div class="nav-center-group">
+                <div class="nav-links">
+                    <a href="#hero">Início</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="#servicos">Serviços</a>
+                    <a href="#videos">Vídeos</a>
+                    <a href="#avaliacoes">Avaliações</a>
+                    <a href="#localizacao">Localização</a>
                 </div>
-                
-                <a href="https://calendly.com/rsaleslavacar/agendamento" class="nav-cta-button">Agendamento</a>
-            </nav>
+            </div>
+
+            <a href="https://calendly.com/rsaleslavacar/agendamento" class="nav-cta-button">Agendamento</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<section id="hero">
+    <div class="container">
+        <h1>O Brilho Que Seu Carro Merece</h1>
+        <p>Cuidado detalhado para a beleza e preservação do seu veículo.</p>
+        <a href="#servicos" class="cta-button">Conheça Nossos Serviços</a>
+    </div>
+</section>
+
+<section id="sobre">
+    <div class="container">
+        <h2>Sobre a RSales Lavacar</h2>
+        <p>Na RSales Lavacar, somos apaixonados por carros e pela arte de fazê-los brilhar. Utilizamos produtos de ponta e técnicas avançadas para oferecer resultados impecáveis. Nosso compromisso é com a excelência, garantindo que seu veículo receba o tratamento que merece, do interior ao exterior, com atenção a cada detalhe.</p>
+    </div>
+</section>
+
+<section id="servicos">
+    <div class="container">
+        <h2>Nossos Serviços Principais</h2>
+
+        <div class="service-grid">
+            <div class="service-card">
+                <img src="detalhada.jpg" alt="Lavagem Detalhada">
+                <div class="card-content">
+                    <i class="fas fa-soap"></i> <h3>Lavagem Detalhada <span class="service-price">A partir de R$ 110</span></h3>
+                    <p>Limpeza minuciosa de cada canto, incluindo caixa de rodas, motor e interior, usando produtos neutros e PH balanceado.</p> </div>
+            </div>
+
+            <div class="service-card">
+                <img src="polimento.jpg" alt="Polimento Comercial">
+                <div class="card-content">
+                    <i class="fas fa-car"></i> <h3>Polimento Comercial <span class="service-price">A partir de R$ 350</span></h3>
+                    <p>Remoção de riscos leves, manchas e oxidação, devolvendo o brilho e a profundidade da pintura original.</p> </div>
+            </div>
+
+            <div class="service-card">
+                <img src="farol.jpeg" alt="Revitalização de Faróis">
+                <div class="card-content">
+                    <i class="fas fa-lightbulb"></i> <h3>Revitalização de Faróis <span class="service-price">A partir de R$ 120</span></h3>
+                    <p>Eliminação do amarelado e opaco, restaurando a transparência para melhor visibilidade e estética veicular.</p> </div>
+            </div>
         </div>
-    </header>
+    </div>
+</section>
 
-    <main>
-        
-        <section id="hero">
-            <div class="container">
-                <h1>O Brilho Que Seu Carro Merece</h1>
-                <p>Especialistas em Estética Automotiva. Cuidado detalhado para a beleza e preservação do seu veículo.</p>
-                <a href="#servicos" class="cta-button">Conheça Nossos Serviços</a>
+<section id="videos">
+    <div class="container">
+        <h2>Resultados do Nosso Trabalho ✨</h2>
+        <p style="margin-bottom: 40px; color: #ccc;">Confira o antes e depois e o cuidado que dedicamos em cada detalhe.</p>
+
+        <div class="video-grid">
+            <div class="video-card">
+                <video autoplay muted loop playsinline poster="thumb1.jpg">
+                    <source src="1.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+                <div class="video-caption">Lavagem e Cuidado de Detalhes</div>
             </div>
-        </section>
 
-        <section id="sobre">
-            <div class="container">
-                <h2>Sobre a RSales Lavacar</h2>
-                <p>Na RSales Lavacar, somos apaixonados por carros e pela arte de fazê-los brilhar. Utilizamos produtos de ponta e técnicas avançadas para oferecer resultados impecáveis. Nosso compromisso é com a excelência, garantindo que seu veículo receba o tratamento que merece, do interior ao exterior, com atenção a cada detalhe.</p>
+            <div class="video-card">
+                <video autoplay muted loop playsinline poster="thumb2.jpg">
+                    <source src="2.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+                <div class="video-caption">Restauração de Farol</div>
             </div>
-        </section>
 
-        <section id="servicos">
-            <div class="container">
-                <h2>Nossos Serviços Principais</h2>
-                <div class="service-grid">
-                    
-                    <div class="service-card">
-                        <img src="detalhada.jpg" alt="Lavagem Detalhada">
-                        <div class="card-content">
-                            <i class="fas fa-soap"></i>
-                            <h3>Lavagem Detalhada <span class="service-price">A partir de R$ 110</span></h3>
-                            <p>Limpeza minuciosa de cada canto, incluindo caixa de rodas, motor e interior, usando produtos neutros e PH balanceado.</p>
-                        </div>
-                    </div>
-
-                    <div class="service-card">
-                        <img src="polimento.jpg" alt="Polimento Comercial">
-                        <div class="card-content">
-                            <i class="fas fa-car"></i>
-                            <h3>Polimento Comercial <span class="service-price">A partir de R$ 350</span></h3>
-                            <p>Remoção de riscos leves, manchas e oxidação, devolvendo o brilho e a profundidade da pintura original.</p>
-                        </div>
-                    </div>
-
-                    <div class="service-card">
-                        <img src="farol.jpeg" alt="Revitalização de Faróis">
-                        <div class="card-content">
-                            <i class="fas fa-lightbulb"></i>
-                            <h3>Revitalização de Faróis <span class="service-price">A partir de R$ 120</span></h3>
-                            <p>Eliminação do amarelado e opaco, restaurando a transparência para melhor visibilidade e estética veicular.</p>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="video-card">
+                <video autoplay muted loop playsinline poster="thumb3.jpg">
+                    <source src="3.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+                <div class="video-caption">Higienização dos Bancos</div>
             </div>
-        </section>
-
-        <section id="videos">
-            <div class="container">
-                <h2>Resultados do Nosso Trabalho ✨</h2>
-                <p style="margin-bottom: 40px; color: #ccc;">Confira o antes e depois e o cuidado que dedicamos em cada detalhe.</p>
-                
-                <div class="video-grid">
-                    
-                    <div class="video-card">
-                        <video autoplay muted loop poster="videos/thumb1.jpg">
-                            <source src="videos/1.mp4" type="video/mp4">
-                            Seu navegador não suporta vídeos.
-                        </video>
-                        <div class="video-caption">Lavagem e Cuidado de Detalhes</div>
-                    </div>
-
-                    <div class="video-card">
-                        <video autoplay muted loop poster="videos/thumb2.jpg">
-                            <source src="videos/2.mp4" type="video/mp4">
-                            Seu navegador não suporta vídeos.
-                        </video>
-                        <div class="video-caption">Restauração do Brilho da Pintura</div>
-                    </div>
-                    
-                    <div class="video-card">
-                        <video autoplay muted loop poster="videos/thumb3.jpg">
-                            <source src="videos/3.mp4" type="video/mp4">
-                            Seu navegador não suporta vídeos.
-                        </video>
-                        <div class="video-caption">Revitalização Interna ou Farol</div>
-                    </div>
-
-                </div>
-                
-                </div>
-        </section>
-        
-        <section id="avaliacoes">
-            <div class="container">
-                <h2>Avaliações de Clientes ⭐️</h2>
-                <div class="avaliacoes-grid">
-                    
-                    <div class="review-card">
-                        <p class="review-text">"O serviço é impecável, o carro saiu como novo. O cuidado nos detalhes da lavagem é o diferencial. Recomendo 100%!"</p>
-                        <p class="reviewer-name">João S.</p>
-                    </div>
-
-                    <div class="review-card">
-                        <p class="review-text">"Fiz a revitalização dos faróis e a diferença é absurda. Melhorou a estética e a segurança. Atendimento de primeira."</p>
-                        <p class="reviewer-name">Mariana L.</p>
-                    </div>
-
-                    <div class="review-card">
-                        <p class="review-text">"Excelente polimento! O carro parece que saiu da concessionária. Profissionais muito atenciosos e qualificados."</p>
-                        <p class="reviewer-name">Carlos F.</p>
-                    </div>
-
-                </div>
-                
-                <a href="https://share.google/woazXUtBEbNm2EynL" target="_blank" class="google-link">
-                    <i class="fab fa-google"></i> Veja todas as avaliações
-                </a>
-            </div>
-        </section>
-
-        <section id="localizacao">
-            <div class="container">
-                <h2>Nossa Localização</h2>
-                <p>R. Peroibe, 751 - Parque das Grevileas, Maringá - PR</p>
-                
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.1017352349883!2d-51.92131238804044!3d-23.4116035794717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94eb8703a466c981%3A0xc6c4f5263a23a1f1!2sR.%20Peroibe%2C%20751%20-%20Parque%20das%20Grevileas%2C%20Maring%C3%A1%20-%20PR%2C%2087025-160%20Brasil!5e0!3m2!1spt-BR!2sbr!4v1700406000000!5m2!1spt-BR!2sbr" width="100%" height="400px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                
-                <p style="margin-top: 20px; font-weight: bold;">R. Peroibe, 751 - Parque das Grevileas, Maringá - PR, 87025-160, Brasil</p>
-                
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <div class="container footer-content">
-            <div class="social-icons">
-                <a href="https://www.instagram.com/rsales.lavacar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/5544997063542" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <p>© 2025 Auto Estética Premium. Todos os direitos reservados.</p>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        function startAutoplay() {
-            const videos = document.querySelectorAll('video');
-            videos.forEach(video => {
-                video.play().catch(error => {
-                    // console.warn("Autoplay bloqueado pelo navegador:", error);
-                });
+<section id="avaliacoes">
+    <div class="container">
+        <h2>Avaliações de Clientes ⭐️</h2>
+        
+        <div class="avaliacoes-grid">
+            <div class="review-card">
+                <p class="review-text">"O serviço é impecável, o carro saiu como novo. O cuidado nos detalhes da lavagem é o diferencial. Recomendo 100%!"</p>
+                <p class="reviewer-name">João S.</p>
+            </div>
+            <div class="review-card">
+                <p class="review-text">"Fiz a revitalização dos faróis e a diferença é absurda. Melhorou a estética e a segurança. Atendimento de primeira."</p>
+                <p class="reviewer-name">Mariana L.</p>
+            </div>
+            <div class="review-card">
+                <p class="review-text">"Excelente polimento! O carro parece que saiu da concessionária. Profissionais muito atenciosos e qualificados."</p>
+                <p class="reviewer-name">Carlos F.</p>
+            </div>
+        </div>
+        
+        <a href="https://share.google/woazXUtBEbNm2EynL" target="_blank" class="google-link">
+            <i class="fab fa-google"></i> Ver todas as avaliações
+        </a>
+    </div>
+</section>
+
+<section id="localizacao">
+    <div class="container">
+        <h2>Nossa Localização</h2>
+        <p>R. Peroibe, 751 - Parque das Grevileas, Maringá - PR</p>
+
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.1017352349883!2d-51.92131238804044!3d-23.4116035794717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94eb8703a466c981%3A0xc6c4f5263a23a1f1!2sR.%20Peroibe%2C%20751%20-%20Parque%20das%20Grevileas%2C%20Maring%C3%A1%20-%20PR%2C%2087025-160%20Brasil!5e0!3m2!1spt-BR!2sbr!4v1700406000000!5m2!1spt-BR!2sbr" 
+                width="100%" 
+                height="400px" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                onerror="this.style.display='none'; this.after(document.createElement('p').textContent='Erro ao carregar o mapa. Verifique a URL do embed.');"
+            ></iframe>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="container footer-content">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/rsales.lavacar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5544997063542" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <p>© 2025 Auto Estética Premium. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+<script>
+    function startAutoplay() {
+        // Tenta iniciar a reprodução em todos os vídeos. O playsinline (no HTML) ajuda em dispositivos móveis.
+        document.querySelectorAll('video').forEach(video => {
+            video.play().catch(error => {
+                // Captura o erro (normalmente 'NotAllowedError' por restrição de autoplay)
             });
-        }
-        window.addEventListener('load', startAutoplay);
-        document.addEventListener('click', startAutoplay, { once: true });
-        document.addEventListener('scroll', startAutoplay, { once: true });
-    </script>
+        });
+    }
+    window.addEventListener('load', startAutoplay);
+    // Ativa o autoplay na primeira interação (clique ou scroll), contornando as restrições do navegador
+    document.addEventListener('click', startAutoplay, { once: true });
+    document.addEventListener('scroll', startAutoplay, { once: true });
+</script>
+
 </body>
 </html>
