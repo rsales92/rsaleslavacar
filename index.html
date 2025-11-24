@@ -39,6 +39,7 @@
             color: var(--secondary-color); /* TEXTO PRINCIPAL CLARO */
             background-color: var(--dark-bg); /* FUNDO PRINCIPAL ESCURO */
             scroll-behavior: smooth;
+            padding-top: 20px; /* Adicionado padding para compensar a falta do cabeçalho */
         }
 
         /* Layout e Centralização */
@@ -53,71 +54,63 @@
         }
 
         /* --------------------------- */
-        /* HEADER / NAV */
+        /* HEADER / NAV - REMOVIDOS */
         /* --------------------------- */
-        header {
-            background: var(--dark-bg);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .nav-center-group {
-            display: flex;
-            flex-grow: 1; 
-            justify-content: center; 
-            align-items: center;
-        }
-
-        .logo-img {
-            height: 70px; 
-            width: auto;
-            vertical-align: middle;
-            transition: opacity 0.3s;
-        }
-
-        .logo-img:hover {
-            opacity: 0.8;
-        }
         
-        /* Links Normais (Centralizados) */
-        .nav-links a {
-            color: var(--secondary-color); 
-            text-decoration: none;
-            margin: 0 15px; 
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color); 
-        }
-
-        /* Botão de Agendamento (Canto Direito) */
-        .nav-cta-button {
-            display: inline-block;
+        /* --------------------------- */
+        /* BOTÕES FLUTUANTES (NOVOS/REPOSICIONADOS) */
+        /* --------------------------- */
+        .floating-cta-button {
+            position: fixed;
+            bottom: 20px; /* Posição inferior padrão, alterada abaixo para os botões específicos */
+            z-index: 2000; /* Acima de tudo */
             background: var(--primary-color); 
             color: var(--white-color);
-            padding: 8px 15px;
+            padding: 12px 20px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px; 
             font-weight: bold;
-            transition: background-color 0.3s;
-            white-space: nowrap; 
+            font-size: 1em;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
         }
 
-        .nav-cta-button:hover {
+        .floating-cta-button:hover {
             background-color: #c82333; 
+            transform: scale(1.05);
         }
 
+        .floating-cta-button i {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        /* Botão de Agendamento (Superior Direito) */
+        #agendamento-flutuante {
+            top: 20px;
+            right: 20px;
+            bottom: auto; /* Desativa a posição inferior */
+            background: var(--primary-color); 
+        }
+
+        /* Botão de Início (Superior Esquerdo) */
+        #inicio-flutuante {
+            top: 20px;
+            left: 20px;
+            right: auto; /* Desativa a posição direita */
+            bottom: auto; /* Desativa a posição inferior */
+            background: var(--mid-dark-bg); /* Cor menos chamativa que o Agendamento */
+            border: 2px solid var(--secondary-color);
+        }
+
+        #inicio-flutuante:hover {
+            background-color: var(--dark-bg);
+            border-color: var(--primary-color);
+        }
+        
         /* --------------------------- */
         /* SEÇÃO HERO */
         /* --------------------------- */
@@ -133,7 +126,7 @@
             justify-content: center;
             overflow: hidden;
             
-            /* LOGO COMO FUNDO (Ajustado o nome do arquivo, se necessário, use "RSALES LOGO.png" ou "rsales-logo.png") */
+            /* LOGO COMO FUNDO */
             background-image: url('rsales-logo.png'); 
             background-size: cover; 
             background-position: center center;
@@ -181,6 +174,8 @@
         .cta-button:hover {
             background-color: #c82333; 
         }
+        
+        /* [ ... ESTILOS DE OUTRAS SEÇÕES (SOBRE, SERVICOS, ETC.) MANTIDOS ... ] */
         
         /* --------------------------- */
         /* SEÇÃO SOBRE */
@@ -329,10 +324,41 @@
         }
 
         /* --------------------------- */
+        /* SEÇÃO: INSTAGRAM (NOVA) */
+        /* --------------------------- */
+        #instagram {
+            background: var(--mid-dark-bg); 
+            text-align: center;
+        }
+
+        #instagram h2 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: var(--primary-color); 
+        }
+
+        .instagram-grid {
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center;
+            gap: 20px; 
+        }
+        
+        .instagram-embed-wrapper {
+            max-width: 350px; 
+            flex: 1 1 300px; 
+            background: var(--dark-bg); 
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: var(--card-shadow);
+            border: 2px solid var(--secondary-color);
+        }
+
+        /* --------------------------- */
         /* SEÇÃO: AVALIAÇÕES */
         /* --------------------------- */
         #avaliacoes {
-            background: var(--mid-dark-bg); 
+            background: var(--dark-bg); 
             color: var(--secondary-color); 
             text-align: center;
             padding: 100px 0;
@@ -344,7 +370,6 @@
             color: var(--secondary-color); 
         }
         
-        /* Adicionei de volta estilos de avaliações ausentes */
         .avaliacoes-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -353,7 +378,7 @@
         }
 
         .review-card {
-            background: var(--dark-bg); 
+            background: var(--mid-dark-bg); 
             padding: 30px;
             border-radius: 8px;
             box-shadow: var(--card-shadow);
@@ -398,7 +423,7 @@
         /* SEÇÃO: LOCALIZAÇÃO */
         /* --------------------------- */
         #localizacao {
-            background: var(--dark-bg); 
+            background: var(--mid-dark-bg); 
             padding: 80px 0;
             text-align: center;
         }
@@ -468,90 +493,36 @@
         /* --------------------------- */
         /* RESPONSIVIDADE */
         /* --------------------------- */
-        @media (max-width: 992px) { 
-            .nav-center-group {
-                flex-grow: 0; 
-            }
-
-            nav {
-                flex-wrap: wrap; 
-                justify-content: center; 
-                gap: 15px;
-            }
-            
-            .logo-img {
-                margin-right: auto; 
-                height: 50px; 
-            }
-
-            .nav-links {
-                order: 3; 
-                width: 100%;
-                text-align: center;
-            }
-
-            .nav-cta-button {
-                order: 2; 
-                margin-left: auto;
-            }
-            
-            .nav-links a {
-                display: inline-block; 
-                margin: 5px 10px;
-            }
-
-            #hero h1 {
-                font-size: 2em;
-            }
-
-            section {
-                padding: 60px 0;
-            }
-            
-            .map-container iframe {
-                height: 300px;
-            }
-        }
         @media (max-width: 768px) {
-            .nav-links a {
-                display: block;
-                margin: 10px 0;
+            body {
+                padding-top: 70px; /* Mais espaço no topo para os botões flutuantes */
             }
-            .logo-img {
-                height: 45px; 
+            .floating-cta-button {
+                padding: 10px 15px;
+                font-size: 0.9em;
+                top: 10px !important;
+            }
+            #agendamento-flutuante {
+                right: 10px;
+                left: auto;
+            }
+            #inicio-flutuante {
+                left: 10px;
+                right: auto;
             }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <nav>
-            <a href="#hero">
-                <img src="rsales-logo.png" alt="RSales Lavacar" class="logo-img">
-            </a>
-
-            <div class="nav-center-group">
-                <div class="nav-links">
-                    <a href="#hero">Início</a>
-                    <a href="#sobre">Sobre</a>
-                    <a href="#servicos">Serviços</a>
-                    <a href="#videos">Vídeos</a>
-                    <a href="#avaliacoes">Avaliações</a>
-                    <a href="#localizacao">Localização</a>
-                </div>
-            </div>
-
-            <a href="https://calendly.com/rsaleslavacar/agendamento" class="nav-cta-button">Agendamento</a>
-        </nav>
-    </div>
-</header>
-
 <main>
 
 <section id="hero">
     <div class="container">
+        <a href="#hero" id="inicio-flutuante" class="floating-cta-button" style="display: none;">
+            <img src="rsales-logo.png" alt="Início" style="height: 25px; margin-right: 5px;"> Início
+        </a>
+        
         <h1>O Brilho Que Seu Carro Merece</h1>
         <p>Cuidado detalhado para a beleza e preservação do seu veículo.</p>
         <a href="#servicos" class="cta-button">Conheça Nossos Serviços</a>
@@ -627,6 +598,49 @@
     </div>
 </section>
 
+---
+
+<section id="instagram">
+    <div class="container">
+        <h2>Últimas do Instagram 📸</h2>
+        <p style="margin-bottom: 40px; color: #ccc;">Veja o que estamos fazendo por aqui.</p>
+
+        <div class="instagram-grid">
+            <div class="instagram-embed-wrapper">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DOJPLe7kRVk/?utm_source=ig_embed&ig_rid=f31c5521-4f99-4770-9b4e-e11b3334208d" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                    <div style="padding:16px;"> 
+                        <a href="https://www.instagram.com/p/DOJPLe7kRVk/?utm_source=ig_embed&ig_rid=f31c5521-4f99-4770-9b4e-e11b3334208d" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                            <div style=" padding: 19% 0;"></div>
+                        </a>
+                    </div>
+                </blockquote>
+            </div>
+
+            <div class="instagram-embed-wrapper">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DOwgV76kevZ/?utm_source=ig_embed&ig_rid=254199f1-a18c-4f51-b844-307e5b61278c" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                    <div style="padding:16px;"> 
+                        <a href="https://www.instagram.com/p/DOwgV76kevZ/?utm_source=ig_embed&ig_rid=254199f1-a18c-4f51-b844-307e5b61278c" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                            <div style=" padding: 19% 0;"></div>
+                        </a>
+                    </div>
+                </blockquote>
+            </div>
+
+            <div class="instagram-embed-wrapper">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DNByManRqnU/?utm_source=ig_embed&ig_rid=c81414e6-d71d-400f-8914-7264a9386377" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                    <div style="padding:16px;"> 
+                        <a href="https://www.instagram.com/p/DNByManRqnU/?utm_source=ig_embed&ig_rid=c81414e6-d71d-400f-8914-7264a9386377" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                            <div style=" padding: 19% 0;"></div>
+                        </a>
+                    </div>
+                </blockquote>
+            </div>
+
+        </div>
+    </div>
+</section>
+---
+
 <section id="avaliacoes">
     <div class="container">
         <h2>Avaliações de Clientes ⭐️</h2>
@@ -681,13 +695,21 @@
             <a href="https://wa.me/5544997063542" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
 
-        <p>© 2025 Auto Estética Premium. Todos os direitos reservados.</p>
+        <p>© 2025 RSales Lavacar - Estetica Automotiva. Todos os direitos reservados.</p>
     </div>
 </footer>
 
+<a href="#hero" id="inicio-flutuante" class="floating-cta-button">
+    <i class="fas fa-home"></i> Início
+</a>
+
+<a href="https://calendly.com/rsaleslavacar/agendamento" target="_blank" id="agendamento-flutuante" class="floating-cta-button">
+    <i class="far fa-calendar-alt"></i> Agendamento
+</a>
+
+
 <script>
     function startAutoplay() {
-        // Tenta iniciar a reprodução em todos os vídeos. O playsinline (no HTML) ajuda em dispositivos móveis.
         document.querySelectorAll('video').forEach(video => {
             video.play().catch(error => {
                 // Captura o erro (normalmente 'NotAllowedError' por restrição de autoplay)
@@ -695,10 +717,11 @@
         });
     }
     window.addEventListener('load', startAutoplay);
-    // Ativa o autoplay na primeira interação (clique ou scroll), contornando as restrições do navegador
     document.addEventListener('click', startAutoplay, { once: true });
     document.addEventListener('scroll', startAutoplay, { once: true });
 </script>
+
+<script async src="//www.instagram.com/embed.js"></script> 
 
 </body>
 </html>
