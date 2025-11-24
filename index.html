@@ -329,10 +329,44 @@
         }
 
         /* --------------------------- */
+        /* SEÇÃO: INSTAGRAM (NOVA) */
+        /* --------------------------- */
+        #instagram {
+            background: var(--mid-dark-bg); 
+            text-align: center;
+        }
+
+        #instagram h2 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: var(--primary-color); 
+        }
+
+        .instagram-grid {
+            display: flex; /* Usamos flexbox ou grid */
+            flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+            justify-content: center;
+            gap: 20px; /* Espaçamento entre os embeds */
+        }
+        
+        .instagram-embed-wrapper {
+            /* Definir uma largura mínima/máxima para o wrapper
+            para garantir que o embed do Instagram (que tem largura fixa) se ajuste
+            bem em uma grade de 3 colunas, especialmente em telas maiores. */
+            max-width: 350px; /* Largura típica de um post do Instagram */
+            flex: 1 1 300px; /* Cresce e encolhe, mas min-width de 300px */
+            background: var(--dark-bg); 
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: var(--card-shadow);
+            border: 2px solid var(--secondary-color);
+        }
+
+        /* --------------------------- */
         /* SEÇÃO: AVALIAÇÕES */
         /* --------------------------- */
         #avaliacoes {
-            background: var(--mid-dark-bg); 
+            background: var(--dark-bg); /* Alterado para dark-bg para alternar a cor de fundo */
             color: var(--secondary-color); 
             text-align: center;
             padding: 100px 0;
@@ -353,7 +387,7 @@
         }
 
         .review-card {
-            background: var(--dark-bg); 
+            background: var(--mid-dark-bg); /* Alterado para mid-dark-bg */
             padding: 30px;
             border-radius: 8px;
             box-shadow: var(--card-shadow);
@@ -398,7 +432,7 @@
         /* SEÇÃO: LOCALIZAÇÃO */
         /* --------------------------- */
         #localizacao {
-            background: var(--dark-bg); 
+            background: var(--mid-dark-bg); /* Alterado para mid-dark-bg para alternar a cor de fundo */
             padding: 80px 0;
             text-align: center;
         }
@@ -538,6 +572,7 @@
                     <a href="#sobre">Sobre</a>
                     <a href="#servicos">Serviços</a>
                     <a href="#videos">Vídeos</a>
+                    <a href="#instagram">Instagram</a> 
                     <a href="#avaliacoes">Avaliações</a>
                     <a href="#localizacao">Localização</a>
                 </div>
@@ -627,6 +662,49 @@
     </div>
 </section>
 
+---
+
+<section id="instagram">
+    <div class="container">
+        <h2>Últimas do Instagram 📸</h2>
+        <p style="margin-bottom: 40px; color: #ccc;">Veja o que estamos fazendo por aqui.</p>
+
+        <div class="instagram-grid">
+            <div class="instagram-embed-wrapper">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DOJPLe7kRVk/?utm_source=ig_embed&ig_rid=f31c5521-4f99-4770-9b4e-e11b3334208d" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                    <div style="padding:16px;"> 
+                        <a href="https://www.instagram.com/p/DOJPLe7kRVk/?utm_source=ig_embed&ig_rid=f31c5521-4f99-4770-9b4e-e11b3334208d" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                            <div style=" padding: 19% 0;"></div>
+                        </a>
+                    </div>
+                </blockquote>
+            </div>
+
+            <div class="instagram-embed-wrapper">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DOwgV76kevZ/?utm_source=ig_embed&ig_rid=254199f1-a18c-4f51-b844-307e5b61278c" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                    <div style="padding:16px;"> 
+                        <a href="https://www.instagram.com/p/DOwgV76kevZ/?utm_source=ig_embed&ig_rid=254199f1-a18c-4f51-b844-307e5b61278c" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                            <div style=" padding: 19% 0;"></div>
+                        </a>
+                    </div>
+                </blockquote>
+            </div>
+
+            <div class="instagram-embed-wrapper">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DNByManRqnU/?utm_source=ig_embed&ig_rid=c81414e6-d71d-400f-8914-7264a9386377" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                    <div style="padding:16px;"> 
+                        <a href="https://www.instagram.com/p/DNByManRqnU/?utm_source=ig_embed&ig_rid=c81414e6-d71d-400f-8914-7264a9386377" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                            <div style=" padding: 19% 0;"></div>
+                        </a>
+                    </div>
+                </blockquote>
+            </div>
+
+        </div>
+    </div>
+</section>
+---
+
 <section id="avaliacoes">
     <div class="container">
         <h2>Avaliações de Clientes ⭐️</h2>
@@ -700,6 +778,7 @@
     document.addEventListener('scroll', startAutoplay, { once: true });
 </script>
 
+<script async src="//www.instagram.com/embed.js"></script> 
+
 </body>
 </html>
-
