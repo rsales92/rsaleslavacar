@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSales Lavacar - Catálogo de Serviços</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* BOTÃO */
+        .details-btn {
+            background: linear-gradient(135deg, #0b5ed7, #084298);
+            color: #fff;
+            border: none;
+            padding: 7px 14px;
+            font-size: 13px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .details-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* MODAL OVERLAY */
+        .details-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            z-index: 3000;
+
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ATIVO */
+        .details-modal-overlay.active {
+            display: flex;
+        }
+
+        /* MODAL BOX */
+        .details-modal {
+            background: #fff;
+            padding: 22px 24px 24px;
+            border-radius: 12px;
+            max-width: 420px;
+            width: 92%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            position: relative;
+
+            animation: modalScale 0.25s ease;
+        }
+
+        /* TÍTULO */
+        .details-modal h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #b30000;
+            font-size: 1.25em;
+            text-align: center;
+        }
+
+        /* TEXTO */
+        .details-modal p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #333;
+            max-height: 320px;
+            overflow-y: auto;
+        }
+
+        /* FECHAR */
+        .details-modal .close-details {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #444;
+            transition: 0.2s;
+        }
+
+        .details-modal .close-details:hover {
+            color: #b30000;
+        }
+
+        @keyframes modalScale {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        :root {
+            --primary-red: #dc3545;
+            --dark-red: #c82333;
+            --light-grey: #f8f9fa;
+            --medium-grey: #e9ecef;
+            --dark-grey: #343a40;
+            --black: #212529;
+            --white: #ffffff;
+            --blue-light: #e6f7ff;
+            --blue-dark: #007bff;
+            --green: #28a745;
+            --dark-green: #1e7e34;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-grey);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 70px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+        main {
+            padding: 40px 0;
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 { color: var(--black); text-align: center; margin-bottom: 20px; font-weight: 700; font-size: 2em; }
+        .info-text { text-align: center; margin-bottom: 30px; font-size: 1.1em; color: var(--dark-grey); padding: 10px 0; border-bottom: 1px solid var(--medium-grey); border-top: 1px solid var(--medium-grey); }
+        #car-selection .button-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; margin-bottom: 30px; }
+        .car-type-btn, .back-button { background-color: var(--primary-red); color: var(--white); border: none; padding: 12px 25px; font-size: 16px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; flex: 1 1 auto; max-width: 200px; font-weight: 600; }
+        .car-type-btn:hover, .back-button:hover { background-color: var(--dark-red); transform: translateY(-2px); }
+        .car-type-btn.active { background-color: var(--dark-red); border: 2px solid var(--primary-red); }
+
+        /* Serviços Avulsos */
+        .additional-services { padding: 0 20px; padding-top: 10px; margin-bottom: 40px; }
+        .additional-services h3 { color: var(--black); font-size: 24px; margin-bottom: 15px; text-align: center; font-weight: 700; border-bottom: 2px solid var(--medium-grey); padding-bottom: 10px; }
+        .service-item { 
+            background-color: var(--light-grey); 
+            border: 1px solid var(--medium-grey); 
+            border-radius: 5px; 
+            padding: 15px; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 15px; 
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        /* Destaque para o serviço selecionado */
+        .service-item.selected {
+            background-color: var(--blue-light);
+            border: 2px solid var(--primary-red);
+            box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+        }
+
+        .service-item input[type="checkbox"] { 
+            min-width: 20px; 
+            height: 20px; 
+            cursor: pointer; 
+            accent-color: var(--primary-red); 
+            margin-top: 5px; 
+        }
+        .service-details { flex-grow: 1; }
+        .service-item h4 { color: var(--primary-red); margin-top: 0; margin-bottom: 5px; font-size: 1.2em; font-weight: 600; }
+        .service-item .price { font-weight: bold; color: var(--black); font-size: 1.1em; display: block; margin-top: 5px; }
+        .service-item p { font-size: 0.95em; color: var(--dark-grey); margin-bottom: 0; }
+
+        .back-button { display: block; width: fit-content; margin: 30px auto 0; }
+        
+        /* --- ESTILOS DO MODAL/POPUP CENTRALIZADA --- */
+        .floating-cart-wrapper {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #floating-cart-icon {
+            background-color: var(--white);
+            color: var(--primary-red);
+            border: 2px solid var(--primary-red);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s, color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-left: auto;
+        }
+
+        #floating-cart-icon:hover {
+            background-color: var(--light-grey);
+            color: var(--dark-red);
+            transform: scale(1.05);
+        }
+        
+        /* Animação */
+        .cart-pulse {
+            animation: pulse-ring 0.6s ease-out;
+        }
+        
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0px rgba(255, 0, 0, 0.7);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--green);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        /* Modal do Carrinho (Fundo Escurecido) */
+        .cart-modal-overlay {
+            display: none; 
+            position: fixed;
+            z-index: 1001; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6); 
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-modal-overlay.active {
+            display: flex; 
+        }
+
+        /* Conteúdo do Modal (A Popup Centralizada) */
+        #cart-summary {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            width: 90%; 
+            max-width: 400px; 
+            max-height: 90vh; 
+            overflow-y: auto;
+            transform: scale(0.95);
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            border-top: 4px solid var(--primary-red);
+            position: relative;
+        }
+
+        .cart-modal-overlay.active #cart-summary {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        #cart-summary h3 { 
+            color: var(--black); 
+            font-size: 18px; 
+            margin-top: 0; 
+            margin-bottom: 10px; 
+            border-bottom: 1px dashed var(--dark-grey); 
+            padding-bottom: 5px; 
+            /* Estilo para centralizar o título do carrinho */
+            text-align: center; 
+        }
+        #cart-items { list-style: none; padding: 0; margin-bottom: 15px; }
+        #cart-items li { 
+            font-size: 0.9em; 
+            margin-bottom: 8px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            color: var(--dark-grey); 
+            border-bottom: 1px dotted var(--medium-grey);
+            padding-bottom: 5px;
+        }
+        #cart-items li span:first-child { max-width: 60%; } 
+        #cart-items li strong { color: var(--black); font-weight: 600; margin-right: 10px; }
+        
+        .remove-item-btn {
+            background: none;
+            border: none;
+            color: var(--primary-red);
+            cursor: pointer;
+            font-size: 1.1em;
+            padding: 0 5px;
+            transition: color 0.2s;
+            line-height: 1;
+            margin-left: 5px;
+        }
+        .remove-item-btn:hover {
+            color: var(--dark-red);
+        }
+
+        .cart-subtotal {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--dark-grey);
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-top: 1px dashed var(--medium-grey);
+        }
+
+        .cart-discount {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--green); 
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+
+        #cart-total { 
+            font-size: 1.3em; 
+            font-weight: 700; 
+            color: var(--black); 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 10px 0; 
+            border-top: 2px solid var(--primary-red); 
+            margin-bottom: 5px;
+        }
+        
+        .payment-note {
+            font-size: 0.9em;
+            color: var(--dark-red);
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 5px;
+            background-color: #ffe6e6;
+            border-radius: 3px;
+            border: 1px solid var(--dark-red);
+        }
+
+        .checkout-button {
+            display: block;
+            width: 100%;
+            max-width: none;
+            background-color: var(--green);
+            margin-top: 15px;
+            border: none;
+            padding: 10px;
+            color: var(--white);
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .checkout-button:hover { background-color: var(--dark-green); }
+        .checkout-button:disabled { background-color: #6c757d; cursor: not-allowed; }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--dark-grey);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .close-modal:hover {
+            color: var(--primary-red);
+        }
+
+        .appointment-message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--blue-light);
+            border: 1px solid #b3e0ff;
+            border-radius: 5px;
+            font-size: 1.1em;
+            color: var(--blue-dark);
+        }
+        .appointment-message a {
+            color: var(--blue-dark);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .appointment-message a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 400px) {
+            .floating-cart-wrapper {
+                bottom: 10px;
+                right: 10px;
+            }
+            #floating-cart-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>RSales Lavacar - Catálogo</h1>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section id="car-selection">
+            <p class="info-text">
+                Selecione a categoria do seu veículo para visualizar os preços dos serviços disponíveis.
+            </p>
+            <h2>Selecione o tipo de carro:</h2>
+            <div class="button-group">
+                <button class="car-type-btn" data-car="HATCH">HATCH</button>
+                <button class="car-type-btn" data-car="SEDAN">SEDAN</button>
+                <button class="car-type-btn" data-car="SUV">SUV</button>
+                <button class="car-type-btn" data-car="PICAPE">PICAPE</button>
+                <img src="logo.jpeg" alt="RSales Lavacar" style="max-width: 440px; width: 100%; height: auto;">
+            </div>
+        </section>
+
+        <section id="services-display" style="display: none;">
+            <h2 id="car-type-title"></h2>
+            <div id="services-content">
+            </div>
+            
+            <button id="back-to-selection" class="back-button">Voltar à Seleção de Carros</button>
+        </section>
+    </main>
+
+    <div id="cart-modal" class="cart-modal-overlay">
+    </div>
+
+    <section class="floating-cart-wrapper">
+        <div id="floating-cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+        </div>
+    </section>
+    
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+    <script>
+        // ESTRUTURA DE DADOS (APENAS SERVIÇOS AVULSOS)
+        const carData = {
+            "SUV": {
+                "additional_services": [
+                    {"name": "Lavagem Express", "description": "Limpeza rápida e eficiente para a manutenção do dia a dia.", "price": "R$ 90,00"},
+                    {"name": "Lavagem Completa", "description": "Limpeza interna e externa completa, com acabamento caprichado e excelente custo-benefício.", "price": "R$ 115,00"},
+                    {"name": "Lavagem Detalhada + Cera Tradicional", "description": "Limpeza completa com aplicação de cera para brilho, proteção leve e toque suave na pintura.", "price": "R$ 150,00"},
+                    {"name": "Lavagem Detalhada + Cera Premium", "description": "Limpeza completa com cera premium, oferecendo alto brilho, maior proteção e intensa hidrorepelência.", "price": "R$ 180,00"},
+                    {"name": "Hidratação dos plásticos externos", "description": "Limpeza e descontaminação dos plásticos externos (para-choques, frisos, retrovisores), com realce da cor original, utilizando produtos de alta durabilidade.", "price": "R$ 60,00"},
+                    {"name": "Hidratação dos plásticos internos", "description": "Limpeza e descontaminação dos plásticos internos (painel, portas, consoles), com realce da cor original e proteção UV.", "price": "R$ 80,00"},
+                    {"name": "Descontaminação de pintura", "description": "Removemos impurezas profundas da pintura, incluindo resíduos metálicos, seiva, poluentes e pulverização de tinta. O processo devolve o toque liso e realça o brilho da superfície.", "price": "R$ 500,00"},
+                    {"name": "Cristalização dos vidros", "description": "Limpeza profunda dos vidros externos, remoção de resíduos como chuva ácida, gordura e poluição, com aplicação de selante hidrofóbico para repelir a água.", "price": "R$ 230,00"},
+                    {"name": "Higienização e hidratação dos bancos de couro", "description": "Limpeza e hidratação profunda para manter seus bancos de couro macios, com remoção de sujeira e revitalização do material.", "price": "R$ 150,00"},
+                    {"name": "Enceramento Técnico (Incluso Lavagem + Descontaminação)", "description": "Enceramento da lataria, removendo manchas e riscos leves, restaurando o brilho e a cor do veículo. Ideal para carros que perderam o brilho com o tempo.", "price": "R$ 600,00"},
+                    {"name": "Revitalização dos faróis (amarelados ou opacos)", "description": "Renova o brilho e remove o amarelado dos faróis, melhorando a iluminação e a estética do veículo.", "price": "R$ 250,00"},
+                    {"name": "Lavagem de Motor (a Seco)", "description": "Processo detalhado e seguro que remove sujeira, poeira e resíduos do cofre e componentes do motor sem utilizar água em excesso", "price": "R$ 250,00"}
+                ],
+            },
+            "HATCH": {
+                "additional_services": [
+                    {"name": "Lavagem Express", "description": "Limpeza rápida e eficiente para a manutenção do dia a dia.", "price": "R$ 65,00"},
+                    {"name": "Lavagem Completa", "description": "Limpeza interna e externa completa, com acabamento caprichado e excelente custo-benefício.", "price": "R$ 85,00"},
+                    {"name": "Lavagem Detalhada + Cera Tradicional", "description": "Limpeza completa com aplicação de cera para brilho, proteção leve e toque suave na pintura.", "price": "R$ 120,00"},
+                    {"name": "Lavagem Detalhada + Cera Premium", "description": "Limpeza completa com cera premium, oferecendo alto brilho, maior proteção e intensa hidrorepelência.", "price": "R$ 150,00"},
+                    {"name": "Hidratação dos plásticos externos", "description": "Limpeza e descontaminação dos plásticos externos.", "price": "R$ 40,00"},
+                    {"name": "Hidratação dos plásticos internos", "description": "Limpeza e descontaminação dos plásticos internos (painel, portas, consoles).", "price": "R$ 60,00"},
+                    {"name": "Descontaminação de pintura", "description": "Removemos impurezas profundas da pintura, incluindo resíduos metálicos, seiva, poluentes e pulverização de tinta. O processo devolve o toque liso e realça o brilho da superfície.", "price": "R$ 300,00"},
+                    {"name": "Cristalização dos vidros", "description": "Limpeza profunda dos vidros, remoção de chuva ácida e aplicação de selante hidrofóbico.", "price": "R$ 230,00"},
+                    {"name": "Higienização e hidratação dos bancos de couro", "description": "Limpeza e hidratação profunda para manter seus bancos de couro macios.", "price": "R$ 120,00"},
+                    {"name": "Enceramento Técnico (Incluso Lavagem + Descontaminação)", "description": "Enceramento da lataria, removendo manchas e riscos leves e recuperando o brilho.", "price": "R$ 400,00"},
+                    {"name": "Revitalização dos faróis (amarelados ou opacos)", "description": "Renova o brilho e remove o amarelado dos faróis.", "price": "R$ 250,00"},
+                    {"name": "Lavagem de Motor (a Seco)", "description": "Processo detalhado e seguro que remove sujeira, poeira e resíduos do cofre e componentes do motor sem utilizar água em excesso", "price": "R$ 250,00"}
+                ],
+            },
+            "SEDAN": {
+                "additional_services": [
+                    {"name": "Lavagem Express", "description": "Limpeza rápida e eficiente para a manutenção do dia a dia.", "price": "R$ 75,00"},
+                    {"name": "Lavagem Completa", "description": "Limpeza interna e externa completa, com acabamento caprichado e excelente custo-benefício.", "price": "R$ 95,00"},
+                    {"name": "Lavagem Detalhada + Cera Tradicional", "description": "Limpeza completa com aplicação de cera para brilho, proteção leve e toque suave na pintura.", "price": "R$ 130,00"},
+                    {"name": "Lavagem Detalhada + Cera Premium", "description": "Limpeza completa com cera premium, oferecendo alto brilho, maior proteção e intensa hidrorepelência.", "price": "R$ 160,00"},
+                    {"name": "Hidratação dos plásticos externos", "description": "Limpeza e descontaminação dos plásticos externos.", "price": "R$ 40,00"},
+                    {"name": "Hidratação dos plásticos internos", "description": "Limpeza e descontaminação dos plásticos internos (painel, portas, consoles).", "price": "R$ 60,00"},
+                    {"name": "Descontaminação de pintura", "description": "Removemos impurezas profundas da pintura, incluindo resíduos metálicos, seiva, poluentes e pulverização de tinta. O processo devolve o toque liso e realça o brilho da superfície.", "price": "R$ 400,00"},
+                    {"name": "Cristalização dos vidros", "description": "Limpeza profunda dos vidros, remoção de chuva ácida e aplicação de selante hidrofóbico.", "price": "R$ 230,00"},
+                    {"name": "Higienização e hidratação dos bancos de couro", "description": "Limpeza e hidratação profunda para manter seus bancos de couro macios.", "price": "R$ 120,00"},
+                    {"name": "Enceramento Técnico (Incluso Lavagem + Descontaminação)", "description": "Enceramento da lataria, removendo manchas e riscos leves e recuperando o brilho.", "price": "R$ 500,00"},
+                    {"name": "Revitalização dos faróis (amarelados ou opacos)", "description": "Renova o brilho e remove o amarelado dos faróis.", "price": "R$ 250,00"},
+                    {"name": "Lavagem de Motor (a Seco)", "description": "Processo detalhado e seguro que remove sujeira, poeira e resíduos do cofre e componentes do motor sem utilizar água em excesso", "price": "R$ 250,00"}
+                ],
+            },
+            "PICAPE": {
+                "additional_services": [
+                    {"name": "Lavagem Express", "description": "Limpeza rápida e eficiente para a manutenção do dia a dia.", "price": "R$ 100,00"},
+                    {"name": "Lavagem Completa", "description": "Limpeza interna e externa completa, com acabamento caprichado e excelente custo-benefício.", "price": "R$ 130,00"},
+                    {"name": "Lavagem Detalhada + Cera Tradicional", "description": "Limpeza completa com aplicação de cera para brilho, proteção leve e toque suave na pintura.", "price": "R$ 170,00"},
+                    {"name": "Lavagem Detalhada + Cera Premium", "description": "Limpeza completa com cera premium, oferecendo alto brilho, maior proteção e intensa hidrorepelência.", "price": "R$ 200,00"},
+                    {"name": "Hidratação dos plásticos externos", "description": "Limpeza e descontaminação dos plásticos externos.", "price": "R$ 40,00"},
+                    {"name": "Hidratação dos plásticos internos", "description": "Limpeza e descontaminação dos plásticos internos (painel, portas, consoles).", "price": "R$ 60,00"},
+                    {"name": "Descontaminação de pintura", "description": "Removemos impurezas profundas da pintura, incluindo resíduos metálicos, seiva, poluentes e pulverização de tinta. O processo devolve o toque liso e realça o brilho da superfície.", "price": "R$ 600,00"},
+                    {"name": "Cristalização dos vidros", "description": "Limpeza profunda dos vidros, remoção de chuva ácida e aplicação de selante hidrofóbico.", "price": "R$ 230,00"},
+                    {"name": "Higienização e hidratação dos bancos de couro", "description": "Limpeza e hidratação profunda para manter seus bancos de couro macios.", "price": "R$ 120,00"},
+                    {"name": "Enceramento Técnico (Incluso Lavagem + Descontaminação)", "description": "Enceramento da lataria, removendo manchas e riscos leves e recuperando o brilho.", "price": "R$ 700,00"},
+                    {"name": "Revitalização dos faróis (amarelados ou opacos)", "description": "Renova o brilho e remove o amarelado dos faróis.", "price": "R$ 250,00"},
+                    {"name": "Lavagem de Motor (a Seco)", "description": "Processo detalhado e seguro que remove sujeira, poeira e resíduos do cofre e componentes do motor sem utilizar água em excesso", "price": "R$ 250,00"}
+                ],
+            }
+        };
+        function getServiceKey(name) {
+            name = name.toLowerCase();
+
+            if (name.includes('express')) return 'express';
+            if (name.includes('completa')) return 'completa';
+            if (name.includes('tradicional')) return 'detalhadaTradicional';
+            if (name.includes('premium')) return 'detalhadaPremium';                
+            if (name.includes('plásticos externos')) return 'plasticosExternos';
+            if (name.includes('plásticos internos')) return 'plasticosInternos';
+            if (name.includes('descontaminação de pintura')) return 'descontaminacao';
+            if (name.includes('bancos')) return 'bancos';
+            if (name.includes('enceramento')) return 'enceramento';
+            if (name.includes('motor')) return 'motor';
+            if (name.includes('faróis') || name.includes('farois')) return 'farol';
+            if (name.includes('vidros')) return 'vidros';
+
+            return 'express';
+        }
+
+        const aplicarRegrasSelecao = () => {
+            const checkboxes = document.querySelectorAll('#services-content input[type="checkbox"]');
+
+            let lavagemSelecionada = false;
+            let descontaminacaoSelecionada = false;
+            let enceramentoSelecionado = false;
+
+            checkboxes.forEach(cb => {
+                if (cb.checked) {
+                    const key = getServiceKey(cb.dataset.name);
+
+                    if (['express','completa','detalhadaTradicional','detalhadaPremium'].includes(key)) {
+                        lavagemSelecionada = true;
+                    }
+                    if (key === 'descontaminacao') descontaminacaoSelecionada = true;
+                    if (key === 'enceramento') enceramentoSelecionado = true;
+                }
+            });
+
+            checkboxes.forEach(cb => {
+                const key = getServiceKey(cb.dataset.name);
+                const wrapper = cb.closest('.service-item');
+
+                cb.disabled = false;
+                wrapper.classList.remove('disabled');
+
+                let motivo = '';
+
+                if (lavagemSelecionada && !cb.checked) {
+                    if (
+                        key === 'descontaminacao' ||
+                        key === 'enceramento' ||
+                        ['express','completa','detalhadaTradicional','detalhadaPremium'].includes(key)
+                    ) {
+                        cb.disabled = true;
+                        motivo = 'Já existe uma lavagem selecionada';
+                    }
+                }
+
+                if (descontaminacaoSelecionada && !cb.checked) {
+                    if (
+                        key === 'enceramento' ||
+                        ['express','completa','detalhadaTradicional','detalhadaPremium'].includes(key)
+                    ) {
+                        cb.disabled = true;
+                        motivo = 'Serviço incompatível com descontaminação';
+                    }
+                }
+
+                if (enceramentoSelecionado && !cb.checked) {
+                    if (
+                        key === 'descontaminacao' ||
+                        ['express','completa','detalhadaTradicional','detalhadaPremium'].includes(key)
+                    ) {
+                        cb.disabled = true;
+                        motivo = 'Serviço incompatível com enceramento';
+                    }
+                }
+
+                if (cb.disabled) {
+                    wrapper.classList.add('disabled');
+
+                    if (!wrapper.querySelector('.lock-tooltip')) {
+                        const span = document.createElement('span');
+                        span.className = 'lock-tooltip';
+                        span.innerText = motivo;
+                        wrapper.querySelector('.service-details').appendChild(span);
+                    } else {
+                        wrapper.querySelector('.lock-tooltip').innerText = motivo;
+                    }
+                } else {
+                    const tooltip = wrapper.querySelector('.lock-tooltip');
+                    if (tooltip) tooltip.remove();
+                }
+            });
+        };
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const carTypeButtons = document.querySelectorAll('.car-type-btn');
+            const backButton = document.getElementById('back-to-selection');
+            const carSelectionSection = document.getElementById('car-selection');
+            const servicesDisplaySection = document.getElementById('services-display');
+            const carTypeTitle = document.getElementById('car-type-title');
+            const servicesContent = document.getElementById('services-content');
+            
+            const floatingCartIcon = document.getElementById('floating-cart-icon');
+            const cartCountSpan = document.getElementById('cart-count');
+            
+            const cartModalOverlay = document.getElementById('cart-modal');
+            let cartItemsList;
+            let cartSummaryElement; 
+            let checkoutButton;
+
+            let cart = [];
+            let currentCarType = '';
+            let nextItemId = 0; 
+            
+            let currentSubtotal = 0; // Armazena o subtotal numérico
+            let currentTotal = 0;   // Armazena o total numérico
+
+            const WHATSAPP_NUMBER = '5544997063542';
+            const DISCOUNT_RATE = 0.05; // 5% de desconto
+
+            /**
+             * FUNÇÃO CRÍTICA: Converte a string de preço em formato BRL (Ex: R$ 1.000,00) para um float (Ex: 1000.00).
+             */
+            const formatPrice = (priceText) => {
+                // Remove "R$" e qualquer texto que não seja dígito, ponto ou vírgula
+                let numStr = priceText.replace(/[^0-9,.]/g, '').trim();
+                
+                // Trata o caso de "60,00 cada"
+                // if (numStr.endsWith('')) {
+                //      numStr = numStr.replace('', '').trim();
+                // }
+
+                // 1. Remove o separador de milhares (o ponto)
+                // Ex: "1.000,00" -> "1000,00"
+                numStr = numStr.replace(/\./g, ''); 
+                
+                // 2. Converte o separador decimal (a vírgula) para o ponto decimal
+                // Ex: "1000,00" -> "1000.00"
+                numStr = numStr.replace(',', '.');
+                
+                return parseFloat(numStr) || 0;
+            };
+
+            /**
+             * FUNÇÃO CRÍTICA: Formata um número float para o formato de moeda BRL (R$ 1.000,00).
+             */
+            const formatToBRL = (number) => {
+                return new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }).format(number);
+            };
+
+            const animateCart = () => {
+                floatingCartIcon.classList.remove('cart-pulse');
+                void floatingCartIcon.offsetWidth; 
+                floatingCartIcon.classList.add('cart-pulse');
+            }
+
+            const toggleFloatingCart = () => {
+                if (cartModalOverlay.classList.contains('active')) {
+                    cartModalOverlay.classList.remove('active');
+                } else {
+                    cartModalOverlay.classList.add('active');
+                }
+            };
+            
+            const createCartSummaryHTML = () => {
+                const summaryHTML = `
+                    <section id="cart-summary">
+                        <span class="close-modal">&times;</span>
+                        <h3>🛒 Carrinho de Serviços</h3>
+                        <ul id="cart-items">
+                            <li>Nenhum serviço avulso selecionado.</li>
+                        </ul>
+                        <div id="cart-summary-totals"> 
+                        </div>
+                        
+                        <p class="payment-note">
+                            Valores válidos para pagamento em Dinheiro ou PIX
+                        </p>
+                        <button id="checkout-button" class="checkout-button" disabled>Agendar</button>
+                    </section>
+                `;
+                
+                cartModalOverlay.innerHTML = summaryHTML;
+                
+                cartItemsList = document.getElementById('cart-items');
+                cartSummaryElement = document.getElementById('cart-summary-totals');
+                checkoutButton = document.getElementById('checkout-button');
+
+                checkoutButton.addEventListener('click', handleCheckout);
+                document.querySelector('.close-modal').addEventListener('click', toggleFloatingCart);
+                
+                cartModalOverlay.addEventListener('click', (event) => {
+                    if (event.target === cartModalOverlay) {
+                        toggleFloatingCart();
+                    }
+                });
+            };
+
+            const removeItem = (itemId) => {
+                const index = cart.findIndex(item => item.id === itemId);
+                if (index > -1) {
+                    const item = cart[index];
+                    const checkbox = document.getElementById(item.elementId);
+                    
+                    if (checkbox) {
+                        checkbox.checked = false;
+                        checkbox.removeAttribute('data-cart-id');
+                        
+                        // Remove o destaque do item de serviço
+                        const serviceItemDiv = checkbox.closest('.service-item');
+                        if (serviceItemDiv) {
+                            serviceItemDiv.classList.remove('selected');
+                        }
+                    }
+                    
+                    cart.splice(index, 1);
+                    renderCart();
+                }
+            };
+            
+            const renderCart = () => {
+                if (!cartSummaryElement) {
+                    createCartSummaryHTML();
+                }
+
+                cartItemsList.innerHTML = '';
+                currentSubtotal = 0;
+                let discountAmount = 0;
+                const itemCount = cart.length;
+
+                if (itemCount === 0) {
+                    cartItemsList.innerHTML = '<li>Nenhum serviço avulso selecionado.</li>';
+                    checkoutButton.disabled = true;
+                } else {
+                    cart.forEach(item => {
+                        const li = document.createElement('li');
+                        li.setAttribute('data-id', item.id); 
+                        li.innerHTML = `
+                            <span>${item.name}</span>
+                            <div>
+                                <strong>${formatToBRL(item.price)}</strong>
+                                <button class="remove-item-btn" data-id="${item.id}" title="Remover item">&times;</button>
+                            </div>
+                        `;
+                        cartItemsList.appendChild(li);
+                        currentSubtotal += item.price;
+                    });
+                    checkoutButton.disabled = false;
+                    
+                    document.querySelectorAll('.remove-item-btn').forEach(button => {
+                        button.addEventListener('click', (event) => {
+                            const itemId = parseInt(event.target.dataset.id);
+                            removeItem(itemId);
+                        });
+                    });
+                }
+                
+                if (itemCount >= 2) {
+                    discountAmount = currentSubtotal * DISCOUNT_RATE;
+                    currentTotal = currentSubtotal - discountAmount;
+                } else {
+                    currentTotal = currentSubtotal;
+                }
+                
+                // Arredondamento para evitar problemas de ponto flutuante no JavaScript
+                currentTotal = Math.round(currentTotal * 100) / 100;
+                discountAmount = Math.round(discountAmount * 100) / 100;
+                currentSubtotal = Math.round(currentSubtotal * 100) / 100;
+                
+                let totalsHTML = '';
+                if (itemCount > 0) {
+                    if (discountAmount > 0) {
+                        totalsHTML += `
+                            <div class="cart-subtotal">
+                                <span>Subtotal:</span>
+                                <span>${formatToBRL(currentSubtotal)}</span>
+                            </div>
+                            <div class="cart-discount">
+                                <span>Desconto (5% em ${itemCount} itens):</span>
+                                <span>-${formatToBRL(discountAmount)}</span>
+                            </div>
+                        `;
+                    }
+                }
+                
+                totalsHTML += `
+                    <div id="cart-total">
+                        <span>Total:</span>
+                        <span id="total-price">${formatToBRL(currentTotal)}</span>
+                    </div>
+                `;
+                
+                cartSummaryElement.innerHTML = totalsHTML;
+
+                cartCountSpan.textContent = itemCount;
+                floatingCartIcon.style.display = 'flex';
+            };
+
+
+            const handleServiceChange = (event) => {
+                const checkbox = event.target;
+                const serviceItemDiv = checkbox.closest('.service-item');
+                const serviceName = checkbox.dataset.name;
+                const servicePrice = formatPrice(checkbox.dataset.price); // Valor numérico
+
+                if (checkbox.checked) {
+                    serviceItemDiv.classList.add('selected'); // Adiciona classe de destaque
+
+                    const serviceId = nextItemId++;
+                    cart.push({
+                        id: serviceId, 
+                        type: 'service', 
+                        name: serviceName,
+                        price: servicePrice,
+                        elementId: checkbox.id 
+                    });
+                    
+                    checkbox.setAttribute('data-cart-id', serviceId); 
+
+                    animateCart();
+                } else {
+                    serviceItemDiv.classList.remove('selected'); // Remove classe de destaque
+
+                    const cartId = parseInt(checkbox.getAttribute('data-cart-id'));
+                    const index = cart.findIndex(item => item.id === cartId);
+
+                    if (index > -1) {
+                        cart.splice(index, 1);
+                        checkbox.removeAttribute('data-cart-id');
+                    }
+                }
+
+                renderCart();
+                aplicarRegrasSelecao();
+            };
+            
+            /**
+             * FUNÇÃO CRÍTICA: Geração da mensagem de checkout
+             */
+            const handleCheckout = () => {
+                // Usamos as variáveis numéricas globais atualizadas pelo renderCart
+                const finalTotal = currentTotal;
+                const subtotalValue = currentSubtotal;
+                const discountAmount = subtotalValue * DISCOUNT_RATE;
+
+                const itemsList = cart.map(item => `- ${item.name} (${formatToBRL(item.price)})`).join('\n');
+                
+                let messageBody = `Olá, gostaria de agendar os seguintes serviços para meu veículo ${currentCarType}:\n\n${itemsList}\n`;
+
+                if (cart.length >= 2) {
+                    messageBody += `\nSubtotal: ${formatToBRL(subtotalValue)}\n`;
+                    messageBody += `Desconto (5% por múltiplos itens): -${formatToBRL(discountAmount)}\n`;
+                }
+
+                messageBody += `\nTotal: ${formatToBRL(finalTotal)}`;
+                
+                messageBody += `\n\n*Favor confirmar a disponibilidade de horário.*`;
+                
+                const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(messageBody)}`;
+                window.open(whatsappUrl, '_blank');
+            };
+
+
+            const generateServicesHTML = (data) => {
+                const services = data.additional_services;
+                let html = '';
+
+                // Apenas Serviços Avulsos
+                html += `
+                    <section class="additional-services">
+                        <h3>Monte seu pedido</h3>
+                `;
+
+                services.forEach((service, index) => {
+                    const id = `service-${currentCarType}-${index}`;
+                    const isChecked = cart.some(item => item.name === service.name);
+                    const selectedClass = isChecked ? 'selected' : '';
+
+                    // Ajusta a exibição para incluir "cada" no preço se for o farol
+                    let priceDisplay = service.price;
+                    if (service.name.includes("Revitalização dos faróis")) {
+                        priceDisplay += ' (o par)';
+                    }
+
+                    html += `
+                        <div class="service-item ${selectedClass}">
+                            <input 
+                                type="checkbox" 
+                                id="${id}" 
+                                data-name="${service.name}" 
+                                data-price="${service.price}"
+                                ${isChecked ? 'checked' : ''}
+                            />
+                            <div class="service-details">
+                                <label for="${id}">
+                                    <h4>${service.name}</h4>
+                                    <p>${service.description.substring(0, 70)}...</p>
+
+                                    <button 
+                                        class="details-btn"
+                                        onclick="abrirModal('${getServiceKey(service.name)}')">
+                                        MAIS DETALHES
+                                    </button>
+
+                                </label>
+                                <span class="price">${priceDisplay}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</section>`;
+                return html;
+            };
+
+            const showServices = (carType) => {
+                currentCarType = carType;
+                carTypeTitle.textContent = `${carType}`;
+                servicesContent.innerHTML = generateServicesHTML(carData[carType]);
+                carSelectionSection.style.display = 'none';
+                servicesDisplaySection.style.display = 'block';
+
+                document.querySelectorAll('#services-content input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.addEventListener('change', handleServiceChange);
+                });
+                renderCart(); // Atualiza o carrinho ao mudar o tipo de carro
+            };
+            
+            const showCarSelection = () => {
+                carSelectionSection.style.display = 'block';
+                servicesDisplaySection.style.display = 'none';
+                
+                // Limpar carrinho e desmarcar tudo ao voltar (opcional, mas recomendado)
+                cart = [];
+                currentCarType = '';
+                renderCart();
+                
+                // Remove a classe 'active' de todos os botões de seleção de carro
+                carTypeButtons.forEach(btn => btn.classList.remove('active'));
+            };
+
+            carTypeButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const carType = event.target.dataset.car;
+                    showServices(carType);
+
+                    // Adiciona a classe 'active' ao botão clicado
+                    carTypeButtons.forEach(btn => btn.classList.remove('active'));
+                    event.target.classList.add('active');
+                });
+            });
+
+            backButton.addEventListener('click', showCarSelection);
+            floatingCartIcon.addEventListener('click', toggleFloatingCart);
+                  
+            // Inicializa o modal do carrinho
+            createCartSummaryHTML();
+            renderCart(); 
+            aplicarRegrasSelecao(); // Renderiza o carrinho vazio inicialmente
+        });
+    </script>
+   
+    <!-- MODAL MAIS DETALHES -->
+<div id="modalDetalhes" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="fecharModal()">&times;</span>
+    <h2 id="modalTitulo"></h2>
+    <ul id="modalLista"></ul>
+  </div>
+</div>
+<style>
+        /* Serviço bloqueado */
+    .service-item.disabled {
+        opacity: 0.55;
+        filter: grayscale(100%);
+        pointer-events: none;
+        position: relative;
+    }
+
+    .service-item.disabled::after {
+        content: "🔒";
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        background: #dc3545;
+        color: #fff;
+        font-size: 11px;
+        padding: 3px 6px;
+        border-radius: 6px;
+        font-weight: 600;
+    }
+
+    .service-item.disabled .lock-tooltip {
+        display: block;
+    }
+
+    .lock-tooltip {
+        display: none;
+        font-size: 12px;
+        margin-top: 6px;
+        color: #b30000;
+        font-weight: 600;
+    }
+
+    .modal {
+     position: fixed;
+     inset: 0;
+     z-index: 9999;
+     background: rgba(0,0,0,0.6);
+     backdrop-filter: blur(3px);
+
+     display: none;
+     align-items: center;
+     justify-content: center;
+    }
+
+
+    .modal-content {
+    background: #fff;
+    padding: 22px;
+    border-radius: 14px;
+    max-width: 450px;
+    width: 92%;
+    animation: zoom .25s ease;
+    }
+
+@keyframes zoom {
+  from { transform: translateY(15px) scale(0.95); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+
+.close {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+#modalTitulo {
+  margin-bottom: 10px;
+  color: #111;
+  font-size: 22px;
+}
+
+#modalLista {
+  padding-left: 18px;
+}
+
+#modalLista li {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+</style>
+
+<script>
+    const servicos = {
+    express: {
+    titulo: "Lavagem Express",
+    itens: [
+      "Lavagem externa com shampoo tradicional",
+      "Limpeza interna superficial",
+      "Limpeza rápida de rodas e pneus",
+    ]
+  },
+
+  completa: {
+    titulo: "Lavagem Completa",
+    itens: [
+      "Pré-lavagem desengraxante",
+      "Lavagem externa com shampoo de cera",
+      "Aspiração interna completa",
+      "Limpeza de painel, portas e console",
+      "Limpeza dos vidros internos e externos",
+      "Lavagem de rodas e pneus",
+      "Finalização com brilho nos pneus"
+    ]
+  },
+
+  detalhadaTradicional: {
+    titulo: "Lavagem Detalhada + Cera Tradicional",
+    itens: [
+      "Lavagem técnica detalhada (incluso pré-lavagem)",
+      "Limpeza das rodas, caixas de roda e pneus",
+      "Aplicação de cera tradicional de carnauba",
+      "Secagem com toalhas de microfibra",
+      "Finalização com brilho nos pneus"
+    ]
+  },
+
+  detalhadaPremium: {
+    titulo: "Lavagem Detalhada + Cera Premium",
+    itens: [
+      "Lavagem técnica detalhada (incluso pré-lavagem)",
+      "Limpeza das rodas, caixas de roda e pneus",
+      "Aplicação de cera premium de alta durabilidade",
+      "Secagem com microfibra especial",
+      "Finalização com brilho nos pneus"
+    ]
+  },
+
+  plasticosExternos: {
+    titulo: "Hidratação dos plásticos externos",
+    itens: [
+        "Limpeza profunda dos plásticos externos",
+        "Descontaminação de sujeiras pesadas",
+        "Revitalização da cor original",
+        "Proteção UV prolongada"
+    ]
+},
+
+   plasticosInternos: {
+    titulo: "Hidratação dos plásticos internos",
+    itens: [
+        "Limpeza técnica de painel, portas e console",
+        "Revitalização da cor original",
+        "Proteção UV",
+        "Acabamento premium"
+    ]
+},
+
+descontaminacao: {
+  titulo: "Descontaminação de pintura",
+  itens: [
+    "Lavagem Completa",
+    "Remoção de resíduos metálicos",
+    "Remoção de seiva, poluição, pulverização de tinta e outros",
+    "Clay bar profissional",
+    "Toque liso e brilho restaurado"
+  ]
+},
+
+bancos: {
+  titulo: "Higienização e hidratação dos bancos de couro",
+  itens: [
+    "Higienização profunda do couro",
+    "Limpeza de poros",
+    "Hidratação intensiva",
+    "Proteção contra ressecamento"
+  ]
+},
+
+enceramento: {
+    titulo: "Enceramento Técnico",
+    itens: [
+      "Lavagem técnica preparatória",
+      "Descontaminação da pintura",
+      "Aplicação de cera ou selante técnico profissional com politriz",
+      "Proteção contra raios UV",
+      "Acabamento final com alto brilho"
+    ]
+},
+
+  motor: {
+    titulo: "Limpeza e Proteção de Motor",
+    itens: [
+      "Isolamento das partes sensíveis",
+      "Limpeza técnica segura do cofre do motor",
+      "Remoção de graxa, poeira e sujeira",
+      "Aplicação de protetor em plásticos e borrachas",
+      "Acabamento final"
+    ]
+  },
+
+  farol: {
+    titulo: "Revitalização de Faróis",
+    itens: [
+      "Lixamento técnico progressivo",
+      "Polimento profissional",
+      "Aplicação de proteção UV",
+      "Restauração da transparência"
+    ]
+  },
+
+  vidros: {
+    titulo: "Cristalização de Vidros",
+    itens: [
+      "Limpeza técnica dos vidros",
+      "Descontaminação da superfície",
+      "Aplicação de produto hidrorrepelente",
+      "Acabamento final"
+    ]
+  }
+};
+
+function abrirModal(servico) {
+  document.getElementById("modalTitulo").innerText = servicos[servico].titulo;
+
+  const lista = document.getElementById("modalLista");
+  lista.innerHTML = "";
+
+  servicos[servico].itens.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    lista.appendChild(li);
+  });
+
+  document.getElementById("modalDetalhes").style.display = "flex";
+}
+
+function fecharModal() {
+  document.getElementById("modalDetalhes").style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == document.getElementById("modalDetalhes")) {
+    fecharModal();
+  }
+}
+</script>
+</body>
+</html>
