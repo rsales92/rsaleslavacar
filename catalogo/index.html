@@ -493,7 +493,7 @@
         const carData = {
             "SUV": {
                 "additional_services": [
-                    {"name": "Lavagem Express", "description": "Limpeza rápida e eficiente para a manutenção do dia a dia.", "price": "R$ 90,00"},
+                    {"name": "Lavagem Simples", "description": "Limpeza rápida e eficiente para a manutenção do dia a dia.", "price": "R$ 90,00"},
                     {"name": "Lavagem Completa", "description": "Limpeza interna e externa completa, com acabamento caprichado e excelente custo-benefício.", "price": "R$ 115,00"},
                     {"name": "Lavagem Detalhada + Cera Tradicional", "description": "Limpeza completa com aplicação de cera para brilho, proteção leve e toque suave na pintura.", "price": "R$ 150,00"},
                     {"name": "Lavagem Detalhada + Cera Premium", "description": "Limpeza completa com cera premium, oferecendo alto brilho, maior proteção e intensa hidrorepelência.", "price": "R$ 180,00"},
@@ -509,7 +509,7 @@
             },
             "HATCH": {
                 "additional_services": [
-                    {"name": "Lavagem Express", "description": "Limpeza rápida e eficiente para a manutenção do dia a dia.", "price": "R$ 65,00"},
+                    {"name": "Lavagem Simples", "description": "Limpeza rápida e eficiente para a manutenção do dia a dia.", "price": "R$ 65,00"},
                     {"name": "Lavagem Completa", "description": "Limpeza interna e externa completa, com acabamento caprichado e excelente custo-benefício.", "price": "R$ 85,00"},
                     {"name": "Lavagem Detalhada + Cera Tradicional", "description": "Limpeza completa com aplicação de cera para brilho, proteção leve e toque suave na pintura.", "price": "R$ 120,00"},
                     {"name": "Lavagem Detalhada + Cera Premium", "description": "Limpeza completa com cera premium, oferecendo alto brilho, maior proteção e intensa hidrorepelência.", "price": "R$ 150,00"},
@@ -525,7 +525,7 @@
             },
             "SEDAN": {
                 "additional_services": [
-                    {"name": "Lavagem Express", "description": "Limpeza rápida e eficiente para a manutenção do dia a dia.", "price": "R$ 75,00"},
+                    {"name": "Lavagem Simples", "description": "Limpeza rápida e eficiente para a manutenção do dia a dia.", "price": "R$ 75,00"},
                     {"name": "Lavagem Completa", "description": "Limpeza interna e externa completa, com acabamento caprichado e excelente custo-benefício.", "price": "R$ 95,00"},
                     {"name": "Lavagem Detalhada + Cera Tradicional", "description": "Limpeza completa com aplicação de cera para brilho, proteção leve e toque suave na pintura.", "price": "R$ 130,00"},
                     {"name": "Lavagem Detalhada + Cera Premium", "description": "Limpeza completa com cera premium, oferecendo alto brilho, maior proteção e intensa hidrorepelência.", "price": "R$ 160,00"},
@@ -541,7 +541,7 @@
             },
             "PICAPE": {
                 "additional_services": [
-                    {"name": "Lavagem Express", "description": "Limpeza rápida e eficiente para a manutenção do dia a dia.", "price": "R$ 100,00"},
+                    {"name": "Lavagem Simples", "description": "Limpeza rápida e eficiente para a manutenção do dia a dia.", "price": "R$ 100,00"},
                     {"name": "Lavagem Completa", "description": "Limpeza interna e externa completa, com acabamento caprichado e excelente custo-benefício.", "price": "R$ 130,00"},
                     {"name": "Lavagem Detalhada + Cera Tradicional", "description": "Limpeza completa com aplicação de cera para brilho, proteção leve e toque suave na pintura.", "price": "R$ 170,00"},
                     {"name": "Lavagem Detalhada + Cera Premium", "description": "Limpeza completa com cera premium, oferecendo alto brilho, maior proteção e intensa hidrorepelência.", "price": "R$ 200,00"},
@@ -559,7 +559,7 @@
         function getServiceKey(name) {
             name = name.toLowerCase();
 
-            if (name.includes('express')) return 'express';
+            if (name.includes('Simples')) return 'Simples';
             if (name.includes('completa')) return 'completa';
             if (name.includes('tradicional')) return 'detalhadaTradicional';
             if (name.includes('premium')) return 'detalhadaPremium';                
@@ -572,7 +572,7 @@
             if (name.includes('faróis') || name.includes('farois')) return 'farol';
             if (name.includes('vidros')) return 'vidros';
 
-            return 'express';
+            return 'Simples';
         }
 
         const aplicarRegrasSelecao = () => {
@@ -586,7 +586,7 @@
                 if (cb.checked) {
                     const key = getServiceKey(cb.dataset.name);
 
-                    if (['express','completa','detalhadaTradicional','detalhadaPremium'].includes(key)) {
+                    if (['Simples','completa','detalhadaTradicional','detalhadaPremium'].includes(key)) {
                         lavagemSelecionada = true;
                     }
                     if (key === 'descontaminacao') descontaminacaoSelecionada = true;
@@ -607,7 +607,7 @@
                     if (
                         key === 'descontaminacao' ||
                         key === 'enceramento' ||
-                        ['express','completa','detalhadaTradicional','detalhadaPremium'].includes(key)
+                        ['Simples','completa','detalhadaTradicional','detalhadaPremium'].includes(key)
                     ) {
                         cb.disabled = true;
                         motivo = 'Já existe uma lavagem selecionada';
@@ -617,7 +617,7 @@
                 if (descontaminacaoSelecionada && !cb.checked) {
                     if (
                         key === 'enceramento' ||
-                        ['express','completa','detalhadaTradicional','detalhadaPremium'].includes(key)
+                        ['Simples','completa','detalhadaTradicional','detalhadaPremium'].includes(key)
                     ) {
                         cb.disabled = true;
                         motivo = 'Serviço incompatível com descontaminação';
@@ -627,7 +627,7 @@
                 if (enceramentoSelecionado && !cb.checked) {
                     if (
                         key === 'descontaminacao' ||
-                        ['express','completa','detalhadaTradicional','detalhadaPremium'].includes(key)
+                        ['Simples','completa','detalhadaTradicional','detalhadaPremium'].includes(key)
                     ) {
                         cb.disabled = true;
                         motivo = 'Serviço incompatível com enceramento';
@@ -1119,8 +1119,8 @@
 
 <script>
     const servicos = {
-    express: {
-    titulo: "Lavagem Express",
+    Simples: {
+    titulo: "Lavagem Simples",
     itens: [
       "Lavagem externa com shampoo tradicional",
       "Limpeza interna superficial",
