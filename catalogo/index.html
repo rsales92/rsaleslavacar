@@ -494,7 +494,7 @@
             "SUV": {
                 "additional_services": [
                     // {"name": "Lavagem Simples", "description": "Limpeza rápida e eficiente para a manutenção do dia a dia.", "price": "R$ 90,00"},
-                    {"name": "Lavagem Básica", "description": "Limpeza interna e externa completa, com acabamento caprichado e excelente custo-benefício.", "price": "R$ 120,00"},
+                    {"name": "Lavagem Basica", "description": "Limpeza interna e externa completa, com acabamento caprichado e excelente custo-benefício.", "price": "R$ 120,00"},
                     {"name": "Lavagem Completa + Cera", "description": "Limpeza completa com aplicação de cera para brilho, proteção leve e toque suave na pintura.", "price": "R$ 150,00"},
                     {"name": "Lavagem Detalhada + Cera Premium", "description": "Limpeza completa com cera premium, oferecendo alto brilho, maior proteção e intensa hidrorepelência.", "price": "R$ 180,00"},
                     {"name": "Revitalização dos plásticos externos", "description": "Limpeza e descontaminação dos plásticos externos (para-choques, frisos, retrovisores), com realce da cor original, utilizando produtos de alta durabilidade.", "price": "R$ 60,00"},
@@ -559,9 +559,9 @@
         function getServiceKey(name) {
             name = name.toLowerCase();
 
-            if (name.includes('Basica')) return 'basica';
-            if (name.includes('Completa')) return 'completa';
-            if (name.includes('Detalhada')) return 'detalhada';
+            if (name.includes('basica')) return 'Basica';
+            if (name.includes('completa')) return 'Completa';
+            if (name.includes('detalhada')) return 'Detalhada';
             // if (name.includes('premium')) return 'detalhadaPremium';                
             if (name.includes('plásticos externos')) return 'plasticosExternos';
             if (name.includes('plásticos internos')) return 'plasticosInternos';
@@ -572,7 +572,7 @@
             if (name.includes('faróis') || name.includes('farois')) return 'farol';
             if (name.includes('vidros')) return 'vidros';
 
-            return 'basica';
+            return 'Basica';
         }
 
         const aplicarRegrasSelecao = () => {
