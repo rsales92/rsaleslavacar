@@ -559,9 +559,9 @@
         function getServiceKey(name) {
             name = name.toLowerCase();
 
-            if (name.includes('Basica')) return 'Basica';
-            if (name.includes('Completa')) return 'Completa';
-            if (name.includes('Detalhada')) return 'Detalhada';
+            if (name.includes('Basica')) return 'basica';
+            if (name.includes('Completa')) return 'completa';
+            if (name.includes('Detalhada')) return 'detalhada';
             // if (name.includes('premium')) return 'detalhadaPremium';                
             if (name.includes('plásticos externos')) return 'plasticosExternos';
             if (name.includes('plásticos internos')) return 'plasticosInternos';
@@ -572,7 +572,7 @@
             if (name.includes('faróis') || name.includes('farois')) return 'farol';
             if (name.includes('vidros')) return 'vidros';
 
-            return 'Completa';
+            return 'basica';
         }
 
         const aplicarRegrasSelecao = () => {
