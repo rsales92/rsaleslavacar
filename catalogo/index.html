@@ -589,7 +589,7 @@
                         lavagemSelecionada = true;
                     }
                     if (key === 'descontaminacao') descontaminacaoSelecionada = true;
-                    if (key === 'Polimento') PolimentoSelecionado = true;
+                    if (key === 'polimento') PolimentoSelecionado = true;
                 }
             });
 
@@ -605,7 +605,7 @@
                 if (lavagemSelecionada && !cb.checked) {
                     if (
                         key === 'descontaminacao' ||
-                        key === 'Polimento' ||
+                        key === 'polimento' ||
                         ['Basica','Completa','Detalhada'].includes(key)
                     ) {
                         cb.disabled = true;
@@ -615,7 +615,7 @@
 
                 if (descontaminacaoSelecionada && !cb.checked) {
                     if (
-                        key === 'Polimento' ||
+                        key === 'polimento' ||
                         ['Basica','Completa','Detalhada'].includes(key)
                     ) {
                         cb.disabled = true;
@@ -1155,7 +1155,7 @@
     itens: [
       "Lavagem técnica detalhada (incluso pré-lavagem)",
       "Limpeza detalhada das rodas, caixas de rodas e pneus",
-      "Limpeza interna profunda"
+      "Limpeza interna profunda",
       "Limpeza dos vidros internos e externos (com antiembaçante)",
       "Aplicação de cera premium de alta durabilidade e hidrorepelencia",
       "Secagem com microfibra especial",
