@@ -503,7 +503,7 @@
                     {"name": "Descontaminação e Cristalização dos vidros", "description": "Limpeza profunda dos vidros externos, remoção de resíduos como chuva ácida, gordura e poluição, com aplicação de selante hidrofóbico para repelir a água.", "price": "R$ 230,00"},
                     {"name": "Higienização dos bancos (Couro ou Tecido)", "description": "Limpeza e hidratação profunda para manter seus bancos limpos e macios.", "price": "*Perante Avaliação*"},
                     {"name": "Polimento Comercial (Incluso Lavagem + Descontaminação)", "description": "Polimento da lataria, removendo manchas e riscos leves, restaurando o brilho e a cor do veículo. Ideal para carros que perderam o brilho com o tempo.", "price": "R$ 600,00"},
-                    {"name": "Revitalização dos faróis", "description": "Renova o brilho e remove o amarelado dos faróis, melhorando a iluminação e a estética do veículo.", "price": "R$ 250,00"},
+                    {"name": "Revitalização dos faróis", "description": "Renova o brilho e remove o amarelado dos faróis, melhorando a iluminação e a estética do veículo.", "price": "R$ "},
                     {"name": "Lavagem de Motor (a Seco)", "description": "Processo detalhado e seguro que remove sujeira, poeira e resíduos do cofre e componentes do motor sem utilizar água em excesso", "price": "R$ 250,00"}
                 ],
             },
@@ -941,7 +941,7 @@
                     // Ajusta a exibição para incluir "cada" no preço se for o farol
                     let priceDisplay = service.price;
                     if (service.name.includes("Revitalização dos faróis")) {
-                        priceDisplay += ' (o par)';
+                        priceDisplay += ' (Perante Avaliação)';
                     }
 
                     html += `
@@ -1185,12 +1185,13 @@ descontaminacao: {
 },
 
 bancos: {
-  titulo: "Higienização e hidratação dos bancos de couro",
+  titulo: "Higienização e hidratação dos bancos (Couro ou Tecido)",
   itens: [
-    "Higienização profunda do couro",
+    "Higienização profunda dos bancos",
     "Limpeza de poros",
     "Hidratação intensiva",
-    "Proteção contra ressecamento"
+    "Proteção contra ressecamento",
+    "Remoção de manchas"
   ]
 },
 
@@ -1227,10 +1228,11 @@ polimento: {
   },
 
   vidros: {
-    titulo: "Cristalização de Vidros",
+    titulo: "Descontaminação e Cristalização de Vidros",
     itens: [
       "Limpeza técnica dos vidros",
       "Descontaminação da superfície",
+      "Remoção de Chuva Ácida",
       "Aplicação de produto hidrorrepelente",
       "Acabamento final"
     ]
