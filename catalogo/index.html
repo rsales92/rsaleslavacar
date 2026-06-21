@@ -939,9 +939,9 @@
                     const selectedClass = isChecked ? 'selected' : '';
 
                     // Ajusta a exibição para incluir "cada" no preço se for o farol
-                    // let priceDisplay = service.price;
-                    // if (service.name.includes("Revitalização dos faróis")) {
-                    //     priceDisplay += ' (Perante Avaliação)';
+                    let priceDisplay = service.price;
+                    if (service.name.includes("Revitalização dos faróis")) {
+                        priceDisplay += ' (Perante Avaliação)';
                     }
 
                     html += `
