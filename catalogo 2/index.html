@@ -1005,6 +1005,8 @@
                     checkbox.addEventListener('change', handleServiceChange);
                 });
                 renderCart(); // Atualiza o carrinho ao mudar o tipo de carro
+                // A troca de seção deve começar no topo, mesmo após rolar as categorias.
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
             };
             
             const showCarSelection = () => {

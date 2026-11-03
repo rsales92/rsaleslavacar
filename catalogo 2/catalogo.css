@@ -3,13 +3,13 @@
     --primary-red:#bd2638;
     --dark-red:#981c2b;
     --black:#202125;
-    --light-grey:#f6f5f2;
+    --light-grey:#dededb;
     --dark-grey:#62636a;
 }
 * {
     box-sizing:border-box}
     body {
-        background:#f6f5f2;
+        background:#dededb;
         color:#202125;
         padding-bottom:100px;
         -webkit-font-smoothing:antialiased}
@@ -24,7 +24,7 @@
                         max-width:1120px;
                         padding:0 32px}
                         header {
-                            background:#fff;
+                            background:#e9e8e5;
                             padding:18px 0;
                             box-shadow:none;
                             border-bottom:1px solid #e6e4df;
@@ -168,7 +168,7 @@
                                                                                                                                         display:flex;
                                                                                                                                         flex-direction:column;
                                                                                                                                         align-items:flex-start;
-                                                                                                                                        background:#fff;
+                                                                                                                                        background:#f1f0ed;
                                                                                                                                         color:#202125;
                                                                                                                                         border:1px solid #e1dfda;
                                                                                                                                         border-radius:14px;
@@ -176,7 +176,7 @@
                                                                                                                                         min-height:177px;
                                                                                                                                         transition:transform .2s,border-color .2s,box-shadow .2s}
                                                                                                                                         .car-type-btn:hover,.car-type-btn.active{
-                                                                                                                                            background:#fff;
+                                                                                                                                            background:#f1f0ed;
                                                                                                                                             color:#202125;
                                                                                                                                             border:1px solid #bd2638;
                                                                                                                                             box-shadow:0 8px 24px #2021250a;
@@ -250,7 +250,7 @@
                                                                                                                                                                                                 font-weight:400}
                                                                                                                                                                                                 .service-item{
                                                                                                                                                                                                     padding:22px;
-                                                                                                                                                                                                    background:white;
+                                                                                                                                                                                                    background:#f1f0ed;
                                                                                                                                                                                                     border:1px solid #e1dfda;
                                                                                                                                                                                                     border-radius:14px;
                                                                                                                                                                                                     margin:0;
@@ -316,7 +316,7 @@
                                                                                                                                                                                                                                                         font-weight:600}
                                                                                                                                                                                                                                                         #cart-count{
                                                                                                                                                                                                                                                             position:static;
-                                                                                                                                                                                                                                                            background:#fff;
+                                                                                                                                                                                                                                                            background:#f1f0ed;
                                                                                                                                                                                                                                                             color:#a12535;
                                                                                                                                                                                                                                                             border:0;
                                                                                                                                                                                                                                                             min-width:25px;
