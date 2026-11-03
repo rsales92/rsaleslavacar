@@ -411,3 +411,61 @@
                                                                                                                                                                                                                                                                                                                                                                                             animation:none!important;
                                                                                                                                                                                                                                                                                                                                                                                             transition:none!important}
                                                                                                                                                                                                                                                                                                                                                                                         }
+
+
+/* Fotos e interações dos serviços. */
+.service-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
+    animation: service-reveal .42s ease-out both;
+    animation-delay: var(--reveal-delay, 0ms);
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.service-photo { width: 100%; position: relative; overflow: hidden; background: #d2d0cb; }
+.service-photo img {
+    display: block; width: 100%; height: 180px; object-fit: cover;
+    transition: transform .45s ease;
+}
+.service-photo > span {
+    position: absolute; bottom: 10px; left: 12px;
+    padding: 3px 7px; border-radius: 5px;
+    background: rgba(25, 25, 28, .76); color: #fff; font-size: 9px;
+}
+.service-card-content { display: flex; gap: 12px; padding: 22px; width: 100%; flex: 1; }
+.service-details { display: flex; flex-direction: column; align-items: flex-start; }
+.service-details label { width: 100%; cursor: pointer; }
+.service-item .price { margin-top: auto; padding-top: 16px; }
+.details-btn {
+    background: #f9e3e6; color: #942033; border: 1px solid #ce8994;
+    border-radius: 8px; font-size: 10px; font-weight: 700;
+    padding: 10px 13px; min-height: 40px; display: inline-flex;
+    align-items: center; gap: 14px; margin: 14px 0 0;
+    transition: background .2s, border-color .2s, transform .2s, box-shadow .2s;
+}
+.details-btn span { font-size: 18px; line-height: 1; }
+.details-btn:hover, .details-btn:focus-visible {
+    background: #bd2638; border-color: #bd2638; color: #fff;
+    box-shadow: 0 4px 12px #981c2b22; transform: translateY(-2px);
+}
+.details-btn:active { transform: translateY(0); }
+.service-item.selected .service-photo { box-shadow: inset 0 -3px #bd2638; }
+.catalog-footer a { color: #942033; text-underline-offset: 3px; }
+.catalog-footer { gap: 12px; flex-wrap: wrap; }
+@keyframes service-reveal {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (hover: hover) {
+    .service-item:not(.disabled):hover { box-shadow: 0 8px 24px #20212512; }
+    .service-item:not(.disabled):hover .service-photo img { transform: scale(1.035); }
+}
+@media (max-width: 700px) {
+    .service-photo img { height: 165px; }
+    .service-card-content { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .service-item, .service-photo img, .details-btn { animation: none; transition: none; }
+}
