@@ -444,26 +444,43 @@
             }
         }
     </style>
+
+    <link rel="stylesheet" href="catalogo.css?v=5">
+
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>RSales Lavacar - Catálogo</h1>
+            <a class="brand" href="../" aria-label="RSales — página inicial"><img src="../rsales-logo.png" alt="RSales"><span>RSales<small>ESTÉTICA AUTOMOTIVA</small></span></a>
+            <a class="header-link" href="../">Conheça a RSales <span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 15 15 5M5 5h10v10"/></svg></span></a>
         </div>
     </header>
     
     <main class="container">
         <section id="car-selection">
-            <p class="info-text">
-                Selecione a categoria do seu veículo para visualizar os preços dos serviços disponíveis.
-            </p>
-            <h2>Selecione o tipo de carro:</h2>
+            <div class="catalog-hero">
+                <div class="hero-copy"><span class="eyebrow">CUIDADO EM CADA DETALHE</span>
+                <h1>Seu carro merece<br>esse <em>cuidado.</em></h1>
+                <p>Da lavagem à proteção da pintura. Encontre o cuidado ideal para o seu veículo e monte seu pedido.</p>
+                <div class="hero-tags"><span>Preços por categoria</span><span>Pedido pelo WhatsApp</span></div></div>
+                <div class="hero-photo"><img src="detalhada.jpg" alt="Lavagem detalhada de veículo" fetchpriority="high"><span>RSales <small>ESTÉTICA AUTOMOTIVA</small></span></div>
+            </div>
+            <div class="selection-heading"><span class="step-number">01</span><div><span class="eyebrow">VAMOS COMEÇAR</span><h2>Qual é o seu veículo?</h2><p>Escolha a categoria para consultar os serviços e valores.</p></div></div>
             <div class="button-group">
-                <button class="car-type-btn" data-car="HATCH">HATCH</button>
-                <button class="car-type-btn" data-car="SEDAN">SEDAN</button>
-                <button class="car-type-btn" data-car="SUV">SUV</button>
-                <button class="car-type-btn" data-car="PICAPE">PICAPE</button>
-                <img src="logo.jpeg" alt="RSales Lavacar" style="max-width: 440px; width: 100%; height: auto;">
+                <button class="car-type-btn" data-car="HATCH"><span class="vehicle-symbol" aria-hidden="true"><svg viewBox="0 0 100 48" fill="none" focusable="false"><path d="M14 34V21l9-12h29l15 13 14 4 5 6v6h-9m-14 0H36m-14 0h-8v-4Z"/>
+<path d="m23 21 6-8h20l10 9H23Zm16-8v9M18 27h6m53 3h6M44 27h5"/>
+<circle cx="29" cy="37" r="7"/><circle cx="70" cy="37" r="7"/></svg></span><strong>Hatch</strong><span class="vehicle-description">Compacto e versátil</span><span class="vehicle-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 15 15 5M5 5h10v10"/></svg></span></button>
+                <button class="car-type-btn" data-car="SEDAN"><span class="vehicle-symbol" aria-hidden="true"><svg viewBox="0 0 100 48" fill="none" focusable="false"><path d="M6 33v-9l16-4L35 9h26l16 13 13 3 4 7v6H82m-14 0H32m-14 0H6v-5Z"/>
+<path d="m29 21 9-8h21l10 9H29Zm20-8v9M9 28h8m68 1h6M48 27h5"/>
+<circle cx="25" cy="37" r="7"/><circle cx="75" cy="37" r="7"/></svg></span><strong>Sedan</strong><span class="vehicle-description">Conforto em cada trajeto</span><span class="vehicle-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 15 15 5M5 5h10v10"/></svg></span></button>
+                <button class="car-type-btn" data-car="SUV"><span class="vehicle-symbol" aria-hidden="true"><svg viewBox="0 0 100 48" fill="none" focusable="false"><path d="M8 34V15l7-9h43l15 14 15 4 4 7v7h-9m-16 0H34m-16 0H8v-4Z"/>
+<path d="M16 18v-7h39l9 10H16Zm15-7v10m16-10v10M19 3h35M11 26h9m63 3h6M41 26h5"/>
+<path d="M16 35a10 10 0 0 1 20 0m29 0a10 10 0 0 1 20 0"/>
+<circle cx="26" cy="37" r="7"/><circle cx="75" cy="37" r="7"/></svg></span><strong>SUV</strong><span class="vehicle-description">Espaço para ir além</span><span class="vehicle-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 15 15 5M5 5h10v10"/></svg></span></button>
+                <button class="car-type-btn" data-car="PICAPE"><span class="vehicle-symbol" aria-hidden="true"><svg viewBox="0 0 100 48" fill="none" focusable="false"><path d="M5 34V19h32l9-12h21l14 15 10 3 4 7v6H84m-14 0H32m-14 0H5v-4Z"/>
+<path d="M8 23h29V19m5 3 7-11h15l10 12H42Zm14-11v12M38 25v9m13-7h5M8 29h7m73 0h4"/>
+<circle cx="25" cy="37" r="7"/><circle cx="77" cy="37" r="7"/></svg></span><strong>Picape</strong><span class="vehicle-description">Força e personalidade</span><span class="vehicle-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 15 15 5M5 5h10v10"/></svg></span></button>
+
             </div>
         </section>
 
@@ -474,16 +491,18 @@
             
             <button id="back-to-selection" class="back-button">Voltar à Seleção de Carros</button>
         </section>
+        <p class="catalog-note">Seu próximo cuidado começa aqui. <span>Selecione, personalize e agende.</span></p>
     </main>
+    <footer class="catalog-footer"><span>RSales · Estética automotiva</span><span>Maringá, PR · Fotos: <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer">Pexels</a></span></footer>
 
     <div id="cart-modal" class="cart-modal-overlay">
     </div>
 
     <section class="floating-cart-wrapper">
-        <div id="floating-cart-icon">
-            <i class="fas fa-shopping-cart"></i>
-            <span id="cart-count">0</span>
-        </div>
+        <button type="button" id="floating-cart-icon" aria-label="Abrir pedido">
+            <span class="cart-label">Meu pedido</span>
+            <span id="cart-count" aria-live="polite">0</span>
+        </button>
     </section>
     
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -923,6 +942,21 @@
             };
 
 
+            // Fotos ilustrativas: priorize arquivos locais quando o conteúdo já foi conferido.
+            const servicePhotos = {
+                Essencial: [null, 'imagens/lavagem-essencial.jpg', 'Pessoa lavando um carro com jato de água'],
+                Completa: [null, 'imagens/lavagem-completa.jpg', 'Profissional aplicando espuma na lavagem de um carro'],
+                Detalhada: [null, 'imagens/lavagem-detalhada-enviada.jpg', 'Limpeza detalhada da grade e da dianteira de um carro com pincel e espuma'],
+                plasticosExternos: [null, 'imagens/grade-parachoque.jpg', 'Detalhe da grade dianteira junto ao para-choque de um carro'],
+                plasticosInternos: [null, 'imagens/painel-limpeza.webp', 'Pessoa limpando os plásticos do painel com pano de microfibra'],
+                descontaminacao: [null, 'imagens/claybar.png', 'Ilustração gerada por IA: aplicação manual de claybar na pintura de um carro'],
+                bancos: [null, 'couro.jpeg', 'Pessoa limpando um banco de couro com pano de microfibra'],
+                polimento: [null, 'polimento.jpg', 'Profissional usando uma politriz na pintura de um carro'],
+                motor: [null, 'imagens/motor-limpo.jpg', 'Motor de carro limpo com componentes e mangueiras em destaque'],
+                farol: [null, '../farol.jpeg', 'Detalhe do farol de um automóvel'],
+                vidros: [null, 'vidros.jpg', 'Pessoa limpando o para-brisa de um carro com pano de microfibra']
+            };
+
             const generateServicesHTML = (data) => {
                 const services = data.additional_services;
                 let html = '';
@@ -937,6 +971,10 @@
                     const id = `service-${currentCarType}-${index}`;
                     const isChecked = cart.some(item => item.name === service.name);
                     const selectedClass = isChecked ? 'selected' : '';
+                    const [photo, fallback, photoAlt] = servicePhotos[getServiceKey(service.name)];
+                    const photoSrc = photo
+                        ? `https://images.unsplash.com/photo-${photo}?auto=format&fit=crop&w=720&q=75`
+                        : fallback;
 
                     // Ajusta a exibição para incluir "cada" no preço se for o farol
                     let priceDisplay = service.price;
@@ -945,7 +983,13 @@
                     }
 
                     html += `
-                        <div class="service-item ${selectedClass}">
+                        <div class="service-item ${selectedClass}" style="--reveal-delay: ${Math.min(index, 4) * 55}ms">
+                            <div class="service-photo service-photo--${getServiceKey(service.name)}">
+                                <img src="${photoSrc}"
+                                     alt="${photoAlt}" loading="lazy" decoding="async" width="720" height="400"
+                                     onerror="this.onerror=null; this.src='${fallback}'">
+                            </div>
+                            <div class="service-card-content">
                             <input 
                                 type="checkbox" 
                                 id="${id}" 
@@ -958,14 +1002,14 @@
                                     <h4>${service.name}</h4>
                                     <p>${service.description.substring(0, 70)}...</p>
 
-                                    <button 
-                                        class="details-btn"
-                                        onclick="abrirModal('${getServiceKey(service.name)}')">
-                                        MAIS DETALHES
-                                    </button>
-
                                 </label>
+                                <button type="button" class="details-btn"
+                                        aria-label="Mais detalhes: ${service.name}"
+                                        onclick="abrirModal('${getServiceKey(service.name)}')">
+                                    MAIS DETALHES <span aria-hidden="true">+</span>
+                                </button>
                                 <span class="price">${priceDisplay}</span>
+                            </div>
                             </div>
                         </div>
                     `;
@@ -986,6 +1030,8 @@
                     checkbox.addEventListener('change', handleServiceChange);
                 });
                 renderCart(); // Atualiza o carrinho ao mudar o tipo de carro
+                // A troca de seção deve começar no topo, mesmo após rolar as categorias.
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
             };
             
             const showCarSelection = () => {
@@ -1003,12 +1049,12 @@
 
             carTypeButtons.forEach(button => {
                 button.addEventListener('click', (event) => {
-                    const carType = event.target.dataset.car;
+                    const carType = event.currentTarget.dataset.car;
                     showServices(carType);
 
                     // Adiciona a classe 'active' ao botão clicado
                     carTypeButtons.forEach(btn => btn.classList.remove('active'));
-                    event.target.classList.add('active');
+                    event.currentTarget.classList.add('active');
                 });
             });
 
