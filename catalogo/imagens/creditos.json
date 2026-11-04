@@ -44,5 +44,11 @@
     "file": "imagens/claybar.png",
     "source": "Imagem gerada por IA para este catálogo, conforme autorização do usuário.",
     "visually_verified": true
+  },
+  {
+    "service": "farol",
+    "file": "imagens/manutencao-farois.jpg",
+    "source": "Imagem fornecida pelo usuário no arquivo manutencao-farois.rar.",
+    "visually_verified": true
   }
 ]
