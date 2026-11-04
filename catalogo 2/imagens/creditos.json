@@ -1,0 +1,44 @@
+[
+  {
+    "service": "Essencial",
+    "file": "imagens/lavagem-essencial.jpg",
+    "source": "https://www.pexels.com/photo/6873122/",
+    "license": "https://www.pexels.com/license/",
+    "visually_verified": true
+  },
+  {
+    "service": "Completa",
+    "file": "imagens/lavagem-completa.jpg",
+    "source": "https://www.pexels.com/photo/6872609/",
+    "license": "https://www.pexels.com/license/",
+    "visually_verified": true
+  },
+  {
+    "service": "Detalhada",
+    "file": "imagens/lavagem-detalhada.jpg",
+    "source": "https://www.pexels.com/photo/4870702/",
+    "license": "https://www.pexels.com/license/",
+    "visually_verified": true
+  },
+  {
+    "service": "plasticosInternos",
+    "file": "imagens/painel.jpg",
+    "source": "https://www.pexels.com/photo/5126931/",
+    "license": "https://www.pexels.com/license/",
+    "visually_verified": true
+  },
+  {
+    "service": "plasticosExternos",
+    "file": "imagens/grade-parachoque.jpg",
+    "source": "https://www.pexels.com/photo/30825547/",
+    "license": "https://www.pexels.com/license/",
+    "visually_verified": true
+  },
+  {
+    "service": "motor",
+    "file": "imagens/motor-limpo.jpg",
+    "source": "https://www.pexels.com/photo/65623/",
+    "license": "https://www.pexels.com/license/",
+    "visually_verified": true
+  }
+]

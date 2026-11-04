@@ -445,7 +445,7 @@
         }
     </style>
 
-    <link rel="stylesheet" href="catalogo.css?v=3">
+    <link rel="stylesheet" href="catalogo.css?v=4">
 
 </head>
 <body>
@@ -493,7 +493,7 @@
         </section>
         <p class="catalog-note">Seu próximo cuidado começa aqui. <span>Selecione, personalize e agende.</span></p>
     </main>
-    <footer class="catalog-footer"><span>RSales · Estética automotiva</span><span>Maringá, PR · Fotos ilustrativas: <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a></span></footer>
+    <footer class="catalog-footer"><span>RSales · Estética automotiva</span><span>Maringá, PR · Fotos ilustrativas · Novas fotos: <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer">Pexels</a></span></footer>
 
     <div id="cart-modal" class="cart-modal-overlay">
     </div>
@@ -944,15 +944,15 @@
 
             // Fotos ilustrativas: priorize arquivos locais quando o conteúdo já foi conferido.
             const servicePhotos = {
-                Essencial: ['1607860108855-64acf2078ed9', 'detalhada.jpg', 'Lavagem e cuidado da carroceria'],
-                Completa: ['1607860108855-64acf2078ed9', 'detalhada.jpg', 'Lavagem e cuidado da carroceria'],
-                Detalhada: ['1607860108855-64acf2078ed9', 'detalhada.jpg', 'Lavagem detalhada do veículo'],
-                plasticosExternos: ['1492144534655-ae79c964c9d7', 'polimento.jpg', 'Acabamento exterior de um automóvel'],
-                plasticosInternos: ['1507136566006-cfc505b114fc', 'couro.jpeg', 'Detalhes do interior de um automóvel'],
+                Essencial: [null, 'imagens/lavagem-essencial.jpg', 'Pessoa lavando um carro com jato de água'],
+                Completa: [null, 'imagens/lavagem-completa.jpg', 'Profissional aplicando espuma na lavagem de um carro'],
+                Detalhada: [null, 'imagens/lavagem-detalhada.jpg', 'Limpeza manual em detalhe com esponja e espuma na dianteira de um carro'],
+                plasticosExternos: [null, 'imagens/grade-parachoque.jpg', 'Detalhe da grade dianteira junto ao para-choque de um carro'],
+                plasticosInternos: [null, 'imagens/painel.jpg', 'Painel de um carro com saídas de ar e console central'],
                 descontaminacao: ['1492144534655-ae79c964c9d7', 'polimento.jpg', 'Pintura e acabamento de um automóvel'],
                 bancos: [null, 'couro.jpeg', 'Pessoa limpando um banco de couro com pano de microfibra'],
                 polimento: [null, 'polimento.jpg', 'Profissional usando uma politriz na pintura de um carro'],
-                motor: ['1486262715619-67b85e0b08d3', 'detalhada.jpg', 'Manutenção e cuidado automotivo'],
+                motor: [null, 'imagens/motor-limpo.jpg', 'Motor de carro limpo com componentes e mangueiras em destaque'],
                 farol: [null, '../farol.jpeg', 'Detalhe do farol de um automóvel'],
                 vidros: [null, 'vidros.jpg', 'Pessoa limpando o para-brisa de um carro com pano de microfibra']
             };
