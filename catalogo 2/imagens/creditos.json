@@ -40,5 +40,11 @@
     "source": "https://www.pexels.com/photo/65623/",
     "license": "https://www.pexels.com/license/",
     "visually_verified": true
+  },
+  {
+    "service": "descontaminacao",
+    "file": "imagens/claybar.png",
+    "source": "Imagem gerada por IA para este catálogo, conforme autorização do usuário.",
+    "visually_verified": true
   }
 ]

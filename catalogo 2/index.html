@@ -949,7 +949,7 @@
                 Detalhada: [null, 'imagens/lavagem-detalhada.jpg', 'Limpeza manual em detalhe com esponja e espuma na dianteira de um carro'],
                 plasticosExternos: [null, 'imagens/grade-parachoque.jpg', 'Detalhe da grade dianteira junto ao para-choque de um carro'],
                 plasticosInternos: [null, 'imagens/painel.jpg', 'Painel de um carro com saídas de ar e console central'],
-                descontaminacao: ['1492144534655-ae79c964c9d7', 'polimento.jpg', 'Pintura e acabamento de um automóvel'],
+                descontaminacao: [null, 'imagens/claybar.png', 'Ilustração gerada por IA: aplicação manual de claybar na pintura de um carro'],
                 bancos: [null, 'couro.jpeg', 'Pessoa limpando um banco de couro com pano de microfibra'],
                 polimento: [null, 'polimento.jpg', 'Profissional usando uma politriz na pintura de um carro'],
                 motor: [null, 'imagens/motor-limpo.jpg', 'Motor de carro limpo com componentes e mangueiras em destaque'],
@@ -984,11 +984,11 @@
 
                     html += `
                         <div class="service-item ${selectedClass}" style="--reveal-delay: ${Math.min(index, 4) * 55}ms">
-                            <div class="service-photo">
+                            <div class="service-photo service-photo--${getServiceKey(service.name)}">
                                 <img src="${photoSrc}"
                                      alt="${photoAlt}" loading="lazy" decoding="async" width="720" height="400"
                                      onerror="this.onerror=null; this.src='${fallback}'">
-                                <span>Imagem ilustrativa</span>
+                                <span>${getServiceKey(service.name) === 'descontaminacao' ? 'Imagem ilustrativa gerada por IA' : 'Imagem ilustrativa'}</span>
                             </div>
                             <div class="service-card-content">
                             <input 

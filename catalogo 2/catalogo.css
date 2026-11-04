@@ -469,3 +469,6 @@
 @media (prefers-reduced-motion: reduce) {
     .service-item, .service-photo img, .details-btn { animation: none; transition: none; }
 }
+
+/* Mantém a claybar e a mão visíveis no recorte horizontal. */
+.service-photo--descontaminacao img { object-position: 50% 65%; }
