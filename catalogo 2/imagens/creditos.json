@@ -15,16 +15,14 @@
   },
   {
     "service": "Detalhada",
-    "file": "imagens/lavagem-detalhada.jpg",
-    "source": "https://www.pexels.com/photo/4870702/",
-    "license": "https://www.pexels.com/license/",
+    "file": "imagens/lavagem-detalhada-enviada.jpg",
+    "source": "Imagem fornecida pelo usuário no arquivo Imagens.rar.",
     "visually_verified": true
   },
   {
     "service": "plasticosInternos",
-    "file": "imagens/painel.jpg",
-    "source": "https://www.pexels.com/photo/5126931/",
-    "license": "https://www.pexels.com/license/",
+    "file": "imagens/painel-limpeza.webp",
+    "source": "Imagem fornecida pelo usuário no arquivo Imagens.rar.",
     "visually_verified": true
   },
   {
