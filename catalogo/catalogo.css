@@ -477,7 +477,7 @@
 .combo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .combo-card { display: flex; flex-direction: column; padding: 24px; background: #f5f3ef; border: 1px solid #cecac3; border-radius: 16px; transition: border-color .2s, box-shadow .2s; }
 .combo-card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-.combo-number { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: #66636a; }
+.combo-number { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; color: #66636a; }
 .combo-discount { font-size: 9px; font-weight: 700; padding: 4px 8px; color: #9d2638; background: #f4dfe3; border-radius: 5px; }
 .combo-card h3 { margin: 22px 0 17px; font-size: 21px; line-height: 1.25; letter-spacing: -.6px; color: #242328; }
 .combo-card ul { padding: 0; margin: 0 0 25px; list-style: none; }
@@ -486,13 +486,13 @@
 .combo-price { margin-top: auto; padding-top: 18px; border-top: 1px solid #dbd7d0; }
 .combo-price > span { font-size: 11px; color: #62616a; }
 .combo-price strong { display: block; font-size: 30px; letter-spacing: -1px; line-height: 1.5; color: #a12537; }
-.combo-price small { display: block; font-size: 10px; color: #646368; margin: 2px 0 19px; }
+.combo-price small { display: block; font-size: 12px; font-weight: 700; color: #646368; margin: 2px 0 19px; }
 .combo-select { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%; min-height: 45px; border: 1px solid #bcb7b0; border-radius: 8px; background: transparent; padding: 11px 13px; color: #29272d; font-size: 10px; font-weight: 700; cursor: pointer; transition: background .2s, color .2s; }
 .combo-select span { font-size: 18px; line-height: 1; }
 .combo-select:hover, .combo-select[aria-pressed="true"] { background: #bd2638; color: #fff; border-color: #bd2638; }
 .combo-selected { border: 1px solid #bd2638; box-shadow: 0 0 0 2px #bd2638; }
 .combo-selection-note { font-size: 10px; color: #66636a; margin: 16px 0 0; line-height: 1.8; }
-.additional-services .custom-order-heading { margin-bottom: 0; font-size: 19px; color: #29272d; }
+.additional-services .custom-order-heading { margin-bottom: 0; font-size: 21px; font-weight: 700; color: #29272d; }
 .custom-order-note { grid-column: 1 / -1; margin: -8px 0 7px; font-size: 10px; color: #62636a; }
 @media (max-width: 900px) {
     .combo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
