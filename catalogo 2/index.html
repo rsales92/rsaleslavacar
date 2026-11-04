@@ -942,7 +942,7 @@
             };
 
 
-            // Fotos ilustrativas do Unsplash; imagens locais mantêm o catálogo utilizável offline.
+            // Fotos ilustrativas: priorize arquivos locais quando o conteúdo já foi conferido.
             const servicePhotos = {
                 Essencial: ['1607860108855-64acf2078ed9', 'detalhada.jpg', 'Lavagem e cuidado da carroceria'],
                 Completa: ['1607860108855-64acf2078ed9', 'detalhada.jpg', 'Lavagem e cuidado da carroceria'],
@@ -950,11 +950,11 @@
                 plasticosExternos: ['1492144534655-ae79c964c9d7', 'polimento.jpg', 'Acabamento exterior de um automóvel'],
                 plasticosInternos: ['1507136566006-cfc505b114fc', 'couro.jpeg', 'Detalhes do interior de um automóvel'],
                 descontaminacao: ['1492144534655-ae79c964c9d7', 'polimento.jpg', 'Pintura e acabamento de um automóvel'],
-                bancos: ['1507136566006-cfc505b114fc', 'couro.jpeg', 'Interior e acabamento de um automóvel'],
-                polimento: ['1492144534655-ae79c964c9d7', 'polimento.jpg', 'Brilho e acabamento da pintura'],
+                bancos: [null, 'couro.jpeg', 'Pessoa limpando um banco de couro com pano de microfibra'],
+                polimento: [null, 'polimento.jpg', 'Profissional usando uma politriz na pintura de um carro'],
                 motor: ['1486262715619-67b85e0b08d3', 'detalhada.jpg', 'Manutenção e cuidado automotivo'],
-                farol: ['1503376780353-7e6692767b70', '../farol.jpeg', 'Detalhes da carroceria de um automóvel'],
-                vidros: ['1492144534655-ae79c964c9d7', 'vidros.jpg', 'Vidros e acabamento exterior de um automóvel']
+                farol: [null, '../farol.jpeg', 'Detalhe do farol de um automóvel'],
+                vidros: [null, 'vidros.jpg', 'Pessoa limpando o para-brisa de um carro com pano de microfibra']
             };
 
             const generateServicesHTML = (data) => {
@@ -972,6 +972,9 @@
                     const isChecked = cart.some(item => item.name === service.name);
                     const selectedClass = isChecked ? 'selected' : '';
                     const [photo, fallback, photoAlt] = servicePhotos[getServiceKey(service.name)];
+                    const photoSrc = photo
+                        ? `https://images.unsplash.com/photo-${photo}?auto=format&fit=crop&w=720&q=75`
+                        : fallback;
 
                     // Ajusta a exibição para incluir "cada" no preço se for o farol
                     let priceDisplay = service.price;
@@ -982,7 +985,7 @@
                     html += `
                         <div class="service-item ${selectedClass}" style="--reveal-delay: ${Math.min(index, 4) * 55}ms">
                             <div class="service-photo">
-                                <img src="https://images.unsplash.com/photo-${photo}?auto=format&amp;fit=crop&amp;w=720&amp;q=75"
+                                <img src="${photoSrc}"
                                      alt="${photoAlt}" loading="lazy" decoding="async" width="720" height="400"
                                      onerror="this.onerror=null; this.src='${fallback}'">
                                 <span>Imagem ilustrativa</span>
