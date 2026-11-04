@@ -445,7 +445,7 @@
         }
     </style>
 
-    <link rel="stylesheet" href="catalogo.css?v=5">
+    <link rel="stylesheet" href="catalogo.css?v=6">
 
 </head>
 <body>
@@ -505,6 +505,7 @@
         </button>
     </section>
     
+    <script src="combos.js"></script>
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
     <script>
@@ -796,6 +797,8 @@
                     
                     cart.splice(index, 1);
                     renderCart();
+                    syncComboSelection();
+                    aplicarRegrasSelecao();
                 }
             };
             
@@ -875,11 +878,17 @@
 
                 cartCountSpan.textContent = itemCount;
                 floatingCartIcon.style.display = 'flex';
+                syncComboSelection();
             };
 
 
             const handleServiceChange = (event) => {
                 const checkbox = event.target;
+                // Combos e pedidos personalizados são duas formas alternativas de seleção.
+                if (cart.some(item => item.type === 'combo')) {
+                    cart = [];
+                    syncComboSelection();
+                }
                 const serviceItemDiv = checkbox.closest('.service-item');
                 const serviceName = checkbox.dataset.name;
                 const servicePrice = formatPrice(checkbox.dataset.price); // Valor numérico
@@ -924,7 +933,7 @@
                 const subtotalValue = currentSubtotal;
                 const discountAmount = subtotalValue * DISCOUNT_RATE;
 
-                const itemsList = cart.map(item => `- ${item.name} (${formatToBRL(item.price)})`).join('\n');
+                const itemsList = cart.map(item => `- ${item.name} (${formatToBRL(item.price)})${item.services ? '\n' + item.services.map(service => '  • ' + service).join('\n') + '\n  Valor do combo já inclui 5% OFF.' : ''}`).join('\n');
                 
                 let messageBody = `Olá, gostaria de agendar os seguintes serviços para meu veículo ${currentCarType}:\n\n${itemsList}\n`;
 
@@ -957,6 +966,56 @@
                 vidros: [null, 'vidros.jpg', 'Pessoa limpando o para-brisa de um carro com pano de microfibra']
             };
 
+            const generateCombosHTML = (carType) => `
+                <section class="combos-section" aria-labelledby="combos-title">
+                    <div class="combos-heading">
+                        <div><span class="eyebrow">MAIS CUIDADO, MELHOR CUSTO-BENEFÍCIO</span>
+                        <h2 id="combos-title">Combinações para cuidar melhor.</h2>
+                        <p>Escolha um combo pronto ou monte seu pedido com serviços avulsos.</p></div>
+                        <span class="combo-payment">5% OFF · Dinheiro ou PIX</span>
+                    </div>
+                    <div class="combo-grid">
+                        ${catalogCombos[carType].map((combo, index) => `
+                            <article class="combo-card">
+                                <div class="combo-card-top"><span class="combo-number">COMBO ${String(index + 1).padStart(2, '0')}</span>
+                                <span class="combo-discount">5% OFF</span></div>
+                                <h3>${combo.name.replace('Combo ', '')}</h3>
+                                <ul>${combo.services.map(service => `<li>${service}</li>`).join('')}</ul>
+                                <div class="combo-price"><span>De <s>${formatToBRL(combo.originalPrice)}</s> por</span>
+                                    <strong>${formatToBRL(combo.price)}</strong>
+                                    <small>Economize ${formatToBRL(combo.originalPrice - combo.price)}</small></div>
+                                <button type="button" class="combo-select" data-combo="${index}" aria-pressed="false">Selecionar combo <span aria-hidden="true">+</span></button>
+                            </article>`).join('')}
+                    </div>
+                    <p class="combo-selection-note" aria-live="polite">Os combos já incluem 5% de desconto. A seleção de um combo substitui os serviços selecionados.</p>
+                </section>`;
+
+            const syncComboSelection = () => {
+                const selectedCombo = cart.find(item => item.type === 'combo');
+                document.querySelectorAll('.combo-select').forEach(button => {
+                    const selected = selectedCombo?.comboIndex === Number(button.dataset.combo);
+                    button.setAttribute('aria-pressed', String(selected));
+                    button.closest('.combo-card').classList.toggle('combo-selected', selected);
+                    button.innerHTML = selected ? 'Combo selecionado <span aria-hidden="true">✓</span>' : `${cart.length ? 'Trocar seleção por este combo' : 'Selecionar combo'} <span aria-hidden="true">+</span>`;
+                });
+            };
+
+            const selectCombo = (index) => {
+                const alreadySelected = cart.some(item => item.type === 'combo' && item.comboIndex === index);
+                document.querySelectorAll('#services-content input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                    checkbox.removeAttribute('data-cart-id');
+                    checkbox.closest('.service-item').classList.remove('selected');
+                });
+                const combo = catalogCombos[currentCarType][index];
+                cart = alreadySelected ? [] : [{ id: nextItemId++, type: 'combo', comboIndex: index,
+                    name: combo.name, services: combo.services, price: combo.price }];
+                renderCart();
+                syncComboSelection();
+                aplicarRegrasSelecao();
+                animateCart();
+            };
+
             const generateServicesHTML = (data) => {
                 const services = data.additional_services;
                 let html = '';
@@ -964,7 +1023,8 @@
                 // Apenas Serviços Avulsos
                 html += `
                     <section class="additional-services">
-                        <h3>Monte seu pedido</h3>
+                        <h3 class="custom-order-heading">Prefere personalizar? Escolha serviços avulsos.</h3>
+                        <p class="custom-order-note">Ao selecionar um serviço avulso, o combo selecionado será substituído.</p>
                 `;
 
                 services.forEach((service, index) => {
@@ -1022,7 +1082,10 @@
             const showServices = (carType) => {
                 currentCarType = carType;
                 carTypeTitle.textContent = `${carType}`;
-                servicesContent.innerHTML = generateServicesHTML(carData[carType]);
+                servicesContent.innerHTML = generateCombosHTML(carType) + generateServicesHTML(carData[carType]);
+                document.querySelectorAll('.combo-select').forEach(button => {
+                    button.addEventListener('click', () => selectCombo(Number(button.dataset.combo)));
+                });
                 carSelectionSection.style.display = 'none';
                 servicesDisplaySection.style.display = 'block';
 
